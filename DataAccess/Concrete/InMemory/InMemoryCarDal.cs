@@ -14,11 +14,14 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{ CarId = 1, Brand = "Wolksvagen" , ColorId = 1, DailyPrice = 56000, Description = "Polo Hatch Back", ModelYear = "2020"},
-                new Car{ CarId = 1, Brand = "Opel" , ColorId = 3, DailyPrice = 160000, Description = "Astra Sedan", ModelYear = "2019"},
-                new Car{ CarId = 1, Brand = "Peugeot" , ColorId = 3, DailyPrice = 4100, Description = "206 Coupe", ModelYear = "2005"},
-                new Car{ CarId = 1, Brand = "Ford" , ColorId = 4, DailyPrice = 75800, Description = "Fiesta Sedan", ModelYear = "2016"},
-                new Car{ CarId = 1, Brand = "BMW" , ColorId = 2, DailyPrice = 153000, Description = "X5- 4x4", ModelYear = "2021"},
+                new Car{ CarId = 1, Brand = "Wolksvagen" , ColorId = 1, DailyPrice = 560, Description = "Polo Hatch Back", ModelYear = "2020"},
+                new Car{ CarId = 2, Brand = "Opel" , ColorId = 3, DailyPrice = 160, Description = "Astra Sedan", ModelYear = "2019"},
+                new Car{ CarId = 3, Brand = "Peugeot" , ColorId = 3, DailyPrice = 410, Description = "206 Coupe", ModelYear = "2016"},
+                new Car{ CarId = 4, Brand = "Ford" , ColorId = 4, DailyPrice = 758, Description = "Fiesta Sedan", ModelYear = "2016"},
+                new Car{ CarId = 5, Brand = "Ford" , ColorId = 2, DailyPrice = 1530, Description = "Transit", ModelYear = "2000"},
+                new Car{ CarId = 6, Brand = "Fiat" , ColorId = 3, DailyPrice = 650, Description = "Albea", ModelYear = "2002"},
+                new Car{ CarId = 7, Brand = "Renault" , ColorId = 1, DailyPrice = 590, Description = "Clio", ModelYear = "2019"},
+                new Car{ CarId = 8, Brand = "Nissan" , ColorId = 4, DailyPrice = 440, Description = "Qashqai", ModelYear = "2020"}
             };
         }
 
