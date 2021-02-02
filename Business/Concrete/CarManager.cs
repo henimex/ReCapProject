@@ -19,8 +19,7 @@ namespace Business.Concrete
         
         public List<Car> GetAllByModelYear(string modelYear)
         {
-            
-            //return _carDal.GetAllByModelYear(p=>p.)
+            return _carDal.GetAllByModelYear(modelYear).ToList();
         }
 
         public void Add(Car car)
