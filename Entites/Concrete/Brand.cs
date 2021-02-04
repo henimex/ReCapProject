@@ -5,9 +5,9 @@ using Entites.Abstract;
 
 namespace Entites.Concrete
 {
-    public class Color : IEntity
+    public class Brand : IEntity
     {
         public int Id { get; set; }
-        public string ColorName { get; set; }
+        public string BrandName { get; set; }
     }
 }

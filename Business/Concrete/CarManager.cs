@@ -16,27 +16,22 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-        
-        public List<Car> GetAllByModelYear(string modelYear)
-        {
-            return _carDal.GetAllByModelYear(modelYear).ToList();
-        }
 
         public void Add(Car car)
         {
-            Console.WriteLine("{0} Added",car.Brand);
+            Console.WriteLine("{0} Added", car.BrandId);
 
             _carDal.Add(car);
         }
 
         public void Update(Car car)
         {
-            Console.WriteLine("{0} Updated", car.Brand);
+            Console.WriteLine("{0} Updated", car.BrandId);
         }
 
         public void Delete(Car car)
         {
-            Console.WriteLine("{0} Deleted", car.Brand);
+            Console.WriteLine("{0} Deleted", car.BrandId);
         }
 
         public List<Car> GetAll()
@@ -44,9 +39,19 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
+        public List<Car> GetAllByModelYear(string modelYear)
+        {
+            return _carDal.GetAll(p => p.ModelYear == modelYear).ToList();
+        }
+
+        public List<Car> GetAllByBrandId(int brandId)
+        {
+            return _carDal.GetAll(P => P.BrandId == brandId).ToList();
+        }
+
         public List<Car> GetAllByColorId(int colorId)
         {
-            return _carDal.GetAllByColorId(colorId).ToList();
+            return _carDal.GetAll(P => P.ColorId == colorId).ToList();
         }
     }
 }
