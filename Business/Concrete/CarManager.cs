@@ -17,6 +17,11 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public List<Car> GetAllByPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+        }
+
         public void Add(Car car)
         {
             if (car.DailyPrice > 0)

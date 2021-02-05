@@ -10,17 +10,11 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //RefactoredMethod();
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            CarManager carManager = new CarManager(new EfCarDal());
-
             /*
             colorManager.Add(new Color { ColorName = "White" });
             colorManager.Add(new Color { ColorName = "Silver" });
             colorManager.Add(new Color { ColorName = "Blue" });
             
-
             brandManager.Add(new Brand{BrandName = "Volkswagen" });
             brandManager.Add(new Brand{BrandName = "Toyota" });
             brandManager.Add(new Brand{BrandName = "Renault" });
@@ -28,7 +22,6 @@ namespace ConsoleUI
             brandManager.Add(new Brand{BrandName = "Fiat" });
             brandManager.Add(new Brand{BrandName = "Opel" });
             
-
             carManager.Add(new Car{BrandId = 1,ColorId = 1,DailyPrice = 250,Description = "Available", ModelYear = "2000"});
             carManager.Add(new Car{BrandId = 5,ColorId = 3,DailyPrice = 1000,Description = "Not Available", ModelYear = "2005"});
             carManager.Add(new Car{BrandId = 2,ColorId = 1,DailyPrice = 500,Description = "On Service", ModelYear = "2010"});
@@ -37,10 +30,102 @@ namespace ConsoleUI
             carManager.Add(new Car{BrandId = 4,ColorId = 5,DailyPrice = 750,Description = "Available", ModelYear = "2019"});
             */
 
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            CarManager carManager = new CarManager(new EfCarDal());
+
             brandManager.Add(new Brand { BrandName = "T" });
             carManager.Add(new Car { BrandId = 1, ColorId = 1, DailyPrice = 0, Description = "Available", ModelYear = "2000" });
 
+            AllCars(carManager, brandManager, colorManager);
 
+            AllCarsByPrice(carManager, brandManager, colorManager);
+
+            AllCarsByRed(carManager, brandManager, colorManager);
+
+            AllCarsByBrand(carManager, brandManager, colorManager);
+        }
+
+        private static void AllCarsByBrand(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
+            Console.WriteLine(".:: Henimex Rent A Car ::. \n\t\t\t\t\tCar List Filter : Brand[Toyota]\n");
+            Console.WriteLine("Car ID \tBrand \t\tColor \t\tModel \t\tPrice \t\tDesc");
+            Console.WriteLine("------ \t------ \t\t------ \t\t------ \t\t------ \t\t------");
+
+            foreach (var car in carManager.GetAllByBrandId(2))
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
+                    car.Id,
+                    brandManager.GetById(car.BrandId).BrandName,
+                    colorManager.GetById(car.ColorId).ColorName,
+                    car.ModelYear,
+                    car.DailyPrice.ToString("##.## TL"),
+                    car.Description);
+            }
+
+            Console.WriteLine("\n-----------------------End of List---------------------------------");
+        }
+
+        private static void AllCarsByRed(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
+            Console.WriteLine(".:: Henimex Rent A Car ::. \n\t\t\t\t\tCar List Filter : Color[RED]\n");
+            Console.WriteLine("Car ID \tBrand \t\tColor \t\tModel \t\tPrice \t\tDesc");
+            Console.WriteLine("------ \t------ \t\t------ \t\t------ \t\t------ \t\t------");
+
+            foreach (var car in carManager.GetAllByColorId(1))
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
+                    car.Id,
+                    brandManager.GetById(car.BrandId).BrandName,
+                    colorManager.GetById(car.ColorId).ColorName,
+                    car.ModelYear,
+                    car.DailyPrice.ToString("##.## TL"),
+                    car.Description);
+            }
+
+            Console.WriteLine("\n-----------------------End of List---------------------------------");
+
+            
+        }
+
+        private static void AllCarsByPrice(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
+            Console.WriteLine(".:: Henimex Rent A Car ::. \n\t\t\t\t\tCar List Filter : Price [500,800]\n");
+            Console.WriteLine("Car ID \tBrand \t\tColor \t\tModel \t\tPrice \t\tDesc");
+            Console.WriteLine("------ \t------ \t\t------ \t\t------ \t\t------ \t\t------");
+
+            foreach (var car in carManager.GetAllByPrice(500, 800))
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
+                    car.Id,
+                    brandManager.GetById(car.BrandId).BrandName,
+                    colorManager.GetById(car.ColorId).ColorName,
+                    car.ModelYear,
+                    car.DailyPrice.ToString("##.## TL"),
+                    car.Description);
+            }
+
+            Console.WriteLine("\n-----------------------End of List---------------------------------");
+        }
+
+        private static void AllCars(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
+            Console.WriteLine(".:: Henimex Rent A Car ::. \n\t\t\t\t\tCar List Filter : No Filter Selected\n");
+            Console.WriteLine("Car ID \tBrand \t\tColor \t\tModel \t\tPrice \t\tDesc");
+            Console.WriteLine("------ \t------ \t\t------ \t\t------ \t\t------ \t\t------");
+
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
+                    car.Id,
+                    brandManager.GetById(car.BrandId).BrandName,
+                    colorManager.GetById(car.ColorId).ColorName,
+                    car.ModelYear,
+                    car.DailyPrice.ToString("##.## TL"),
+                    car.Description);
+            }
+
+            Console.WriteLine("\n-----------------------End of List---------------------------------");
         }
 
         private static void RefactoredMethod()
