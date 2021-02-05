@@ -1,5 +1,6 @@
 ﻿using System;
 using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entites.Concrete;
 
@@ -10,6 +11,35 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //RefactoredMethod();
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            /*
+            colorManager.Add(new Color { ColorName = "White" });
+            colorManager.Add(new Color { ColorName = "Silver" });
+            colorManager.Add(new Color { ColorName = "Blue" });
+            
+
+            brandManager.Add(new Brand{BrandName = "Volkswagen" });
+            brandManager.Add(new Brand{BrandName = "Toyota" });
+            brandManager.Add(new Brand{BrandName = "Renault" });
+            brandManager.Add(new Brand{BrandName = "T" });
+            brandManager.Add(new Brand{BrandName = "Fiat" });
+            brandManager.Add(new Brand{BrandName = "Opel" });
+            
+
+            carManager.Add(new Car{BrandId = 1,ColorId = 1,DailyPrice = 250,Description = "Available", ModelYear = "2000"});
+            carManager.Add(new Car{BrandId = 5,ColorId = 3,DailyPrice = 1000,Description = "Not Available", ModelYear = "2005"});
+            carManager.Add(new Car{BrandId = 2,ColorId = 1,DailyPrice = 500,Description = "On Service", ModelYear = "2010"});
+            carManager.Add(new Car{BrandId = 2,ColorId = 1,DailyPrice = 500,Description = "On Service", ModelYear = "2010"});
+            carManager.Add(new Car{BrandId = 3,ColorId = 3,DailyPrice = 500,Description = "Available", ModelYear = "2017"});
+            carManager.Add(new Car{BrandId = 4,ColorId = 5,DailyPrice = 750,Description = "Available", ModelYear = "2019"});
+            */
+
+            brandManager.Add(new Brand { BrandName = "T" });
+            carManager.Add(new Car { BrandId = 1, ColorId = 1, DailyPrice = 0, Description = "Available", ModelYear = "2000" });
+
 
         }
 
@@ -25,7 +55,7 @@ namespace ConsoleUI
                 Console.WriteLine(color.BrandId);
             }
 
-            carManager.Add(new Car {BrandId = 3, ColorId = 1});
+            carManager.Add(new Car { BrandId = 3, ColorId = 1 });
 
             foreach (var carModel in carManager.GetAllByModelYear("2016"))
             {
@@ -33,11 +63,11 @@ namespace ConsoleUI
             }
 
             Car carToDelete = new Car
-                {Id = 10, BrandId = 1, ColorId = 6, Description = "Available", DailyPrice = 256, ModelYear = "2001"};
+            { Id = 10, BrandId = 1, ColorId = 6, Description = "Available", DailyPrice = 256, ModelYear = "2001" };
             carManager.Delete(carToDelete);
 
             Car carToUpdate = new Car
-                {Id = 6, BrandId = 2, ColorId = 3, DailyPrice = 350, Description = "Albea", ModelYear = "2002"};
+            { Id = 6, BrandId = 2, ColorId = 3, DailyPrice = 350, Description = "Albea", ModelYear = "2002" };
             carManager.Update(carToUpdate);
 
             ListAllCars(carManager);

@@ -19,18 +19,26 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            Console.WriteLine("{0} Added", car.BrandId);
-
-            _carDal.Add(car);
+            if (car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine("{0} Added", car.BrandId);
+            }
+            else
+            {
+                Console.WriteLine("Daily prica must be greater than Zero (0)");
+            }
         }
 
         public void Update(Car car)
         {
+            _carDal.Update(car);
             Console.WriteLine("{0} Updated", car.BrandId);
         }
 
         public void Delete(Car car)
         {
+            _carDal.Delete(car);
             Console.WriteLine("{0} Deleted", car.BrandId);
         }
 

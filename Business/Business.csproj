@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Entites\Entites.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validation\" />
+  </ItemGroup>
+
 </Project>
