@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Entites.Abstract;
+using Core.Entities;
+
 
 namespace Entites.Concrete
 {

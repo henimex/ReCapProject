@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Business.Abstract;
 using DataAccess.Abstract;
 using Entites.Concrete;
+using Entites.DTOs;
 
 namespace Business.Concrete
 {
@@ -20,6 +20,11 @@ namespace Business.Concrete
         public List<Car> GetAllByPrice(decimal min, decimal max)
         {
             return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public void Add(Car car)
@@ -59,12 +64,12 @@ namespace Business.Concrete
 
         public List<Car> GetAllByBrandId(int brandId)
         {
-            return _carDal.GetAll(P => P.BrandId == brandId).ToList();
+            return _carDal.GetAll(p => p.BrandId == brandId).ToList();
         }
 
         public List<Car> GetAllByColorId(int colorId)
         {
-            return _carDal.GetAll(P => P.ColorId == colorId).ToList();
+            return _carDal.GetAll(p => p.ColorId == colorId).ToList();
         }
     }
 }
