@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{92CCDD3B-D7B6-4423-91EF-039F59BA63BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BF8A3103-0926-4D11-8DFB-E607A173BB8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{BF8A3103-0926-4D11-8DFB-E607A173BB8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFInterface", "WPFInterface\WPFInterface.csproj", "{A4630F6E-3069-498F-945A-1FBC2FBBA6FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{BF8A3103-0926-4D11-8DFB-E607A173BB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF8A3103-0926-4D11-8DFB-E607A173BB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF8A3103-0926-4D11-8DFB-E607A173BB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4630F6E-3069-498F-945A-1FBC2FBBA6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4630F6E-3069-498F-945A-1FBC2FBBA6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4630F6E-3069-498F-945A-1FBC2FBBA6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4630F6E-3069-498F-945A-1FBC2FBBA6FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
