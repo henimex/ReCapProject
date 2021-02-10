@@ -6,30 +6,33 @@
         xmlns:local="clr-namespace:WPFInterface"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="WPFInterface.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" Loaded="Window_Loaded">
-    <Grid>
-        <DataGrid x:Name="DataGridCars" Margin="10,139,10,112" FontSize="16" Background="#FFA4A4A4" HorizontalGridLinesBrush="#FF8B8A8A" VerticalGridLinesBrush="#FF8B8A8A" RowBackground="#FFB42020" AlternationCount="1" AlternatingRowBackground="#FF403B3B" AreRowDetailsFrozen="True" SelectionChanged="DataGridCars_SelectionChanged"/>
-        <Grid Margin="0,5,0,0" Height="129" VerticalAlignment="Top">
-            <ComboBox x:Name="CbxFilterType" HorizontalAlignment="Left" Margin="866,53,0,0" VerticalAlignment="Top" Width="112" Height="16" FontSize="10"/>
-            <TextBlock HorizontalAlignment="Left" Margin="24,6,0,0" TextWrapping="Wrap" Text="Car Brand" VerticalAlignment="Top" FontSize="9"/>
-            <TextBox x:Name="TxtModelYear" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="19" Margin="183,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <ComboBox x:Name="CbxBrand" HorizontalAlignment="Left" Margin="24,18,0,0" VerticalAlignment="Top" Width="120" Height="19" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <TextBlock HorizontalAlignment="Left" Margin="24,41,0,0" TextWrapping="Wrap" Text="Color" VerticalAlignment="Top" FontSize="9"/>
-            <ComboBox x:Name="CbxColor" HorizontalAlignment="Left" Margin="24,52,0,0" VerticalAlignment="Top" Width="120" Height="19" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <TextBlock HorizontalAlignment="Left" Margin="183,6,0,0" TextWrapping="Wrap" Text="Model Year" VerticalAlignment="Top" FontSize="9"/>
-            <TextBox x:Name="TxtDailyPrice" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="19" Margin="183,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <TextBlock HorizontalAlignment="Left" Margin="183,41,0,0" TextWrapping="Wrap" Text="Daily Price" VerticalAlignment="Top" FontSize="9"/>
-            <TextBox x:Name="TxtDescription" HorizontalAlignment="Left" Height="53" Margin="308,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <TextBlock HorizontalAlignment="Left" Margin="308,6,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontSize="9"/>
+        Title="MainWindow" Height="650" Width="695" Loaded="Window_Loaded">
+    <Grid ClipToBounds="True">
+        <DataGrid x:Name="DataGridCars" Margin="10,181,11,112" FontSize="16" Background="#FFA4A4A4" HorizontalGridLinesBrush="#FF8B8A8A" VerticalGridLinesBrush="#FF8B8A8A" RowBackground="#FFDE1212" AlternationCount="1" AlternatingRowBackground="#FF343131" AreRowDetailsFrozen="True" SelectionChanged="DataGridCars_SelectionChanged" Foreground="#FFFDFDFD" BorderThickness="3"/>
+        <Grid Margin="5" Height="129" VerticalAlignment="Top">
+            <ComboBox x:Name="CbxFilterType" HorizontalAlignment="Left" Margin="454,137,0,-42" VerticalAlignment="Top" Width="213" Height="34" SelectionChanged="CbxFilterType_SelectionChanged"/>
+            <TextBlock HorizontalAlignment="Left" Margin="24,12,0,0" TextWrapping="Wrap" Text="Car Brand" VerticalAlignment="Top" Height="21" Width="59"/>
+            <TextBox x:Name="TxtModelYear" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="265,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontFamily="Franklin Gothic Book"/>
+            <ComboBox x:Name="CbxBrand" HorizontalAlignment="Left" Margin="24,27,0,0" VerticalAlignment="Top" Width="182" Height="34" FontFamily="Franklin Gothic Book"/>
+            <TextBlock HorizontalAlignment="Left" Margin="24,73,0,0" TextWrapping="Wrap" Text="Color" VerticalAlignment="Top" Height="21" Width="32"/>
+            <ComboBox x:Name="CbxColor" HorizontalAlignment="Left" Margin="24,88,0,0" VerticalAlignment="Top" Width="182" Height="34" FontFamily="Franklin Gothic Book"/>
+            <TextBlock HorizontalAlignment="Left" Margin="265,12,0,0" TextWrapping="Wrap" Text="Model Year" VerticalAlignment="Top" Height="21" Width="68"/>
+            <TextBox x:Name="TxtDailyPrice" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="265,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontFamily="Franklin Gothic Book"/>
+            <TextBlock HorizontalAlignment="Left" Margin="265,73,0,0" TextWrapping="Wrap" Text="Daily Price" VerticalAlignment="Top" Height="21" Width="62"/>
+            <TextBox x:Name="TxtDescription" HorizontalAlignment="Left" Height="95" Margin="454,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" FontFamily="Franklin Gothic Book"/>
+            <TextBlock HorizontalAlignment="Left" Margin="454,12,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="21" Width="68"/>
 
 
-            <TextBox x:Name="TxtFilter" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="19" Margin="866,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="10" FontFamily="Franklin Gothic Book"/>
-            <TextBlock HorizontalAlignment="Left" Margin="866,18,0,0" TextWrapping="Wrap" Text="Filter" VerticalAlignment="Top" FontSize="9"/>
+            <TextBox x:Name="TxtFilter" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="32" Margin="334,137,0,-40" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" FontSize="10" FontFamily="Franklin Gothic Book"/>
+            <TextBlock HorizontalAlignment="Left" Margin="334,122,0,-9" TextWrapping="Wrap" Text="Filter" VerticalAlignment="Top"/>
             <TextBlock x:Name="TxtCarId" HorizontalAlignment="Left" Margin="12,579,0,-477" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Height="27" Width="51" FontSize="16" Foreground="#FFC50000" FontWeight="Bold"/>
 
         </Grid>
-        <dx:SimpleButton x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Height="37" Margin="25,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnAdd_Click"/>
-        <dx:SimpleButton x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Height="37" Margin="168,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnUpdate_Click"/>
-        <dx:SimpleButton x:Name="BtnDelete" Content="Delete" HorizontalAlignment="Left" Height="37" Margin="311,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnDelete_Click"/>
+
+        <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Height="37" Margin="20,139,0,0" VerticalAlignment="Top" Width="80" Click="BtnAdd_Click"/>
+        <Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Height="37" Margin="105,139,0,0" VerticalAlignment="Top" Width="80" Click="BtnUpdate_Click"/>
+        <Button x:Name="BtnDelete" Content="Delete" HorizontalAlignment="Left" Height="37" Margin="190,139,0,0" VerticalAlignment="Top" Width="80
+                " Click="BtnDelete_Click"/>
     </Grid>
+
 </Window>

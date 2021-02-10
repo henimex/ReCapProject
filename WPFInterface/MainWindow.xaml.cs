@@ -71,6 +71,20 @@ namespace WPFInterface
             //CbxBrand.Text = br.BrandName;
             //var clr = _colorManager.GetById(selectedItem.ColorId);
             //CbxColor.Text = clr.ColorName;
+
+            //object test = DataGridCars.SelectedItem;
+            //int secilenId = Convert.ToInt32(DataGridCars.SelectedCells[0].Column.GetCellContent(test));
+
+            //int secId = (DataGridCars.SelectedItems as Car).Id;
+            //int idtest22 = (int) ((DataRowView)DataGridCars.SelectedItem).Row["Id"];
+
+            //MessageBox.Show(idtest22.ToString());
+
+            
+            //int test = _selectedDto.CarId;
+            //MessageBox.Show(test.ToString());
+            //MessageBox.Show(Convert.ToString(((CarDetailDto) DataGridCars.SelectedItem).CarId));
+
             var _selectedDto = (CarDetailDto)DataGridCars.SelectedItem;
             if (_selectedDto != null)
             {
@@ -145,10 +159,15 @@ namespace WPFInterface
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             //var _selectedDto2 = (CarDetailDto)DataGridCars.SelectedItem;
+            //object test = DataGridCars.SelectedItem;
+            //int secilenId = Convert.ToInt32(DataGridCars.SelectedCells[0].Column.GetCellContent(test));
+            //MessageBox.Show(secilenId.ToString());
+
             _carManager.Update(new Car
             {
-                Id = Convert.ToInt32(TxtCarId.Text),
+                //Id = Convert.ToInt32(TxtCarId.Text),
                 //Id = _selectedDto2.CarId,
+                Id = ((CarDetailDto)DataGridCars.SelectedItem).CarId,
                 BrandId = Convert.ToInt32(CbxBrand.SelectedValue),
                 ColorId = Convert.ToInt32(CbxColor.SelectedValue),
                 ModelYear = TxtModelYear.Text,
@@ -160,20 +179,23 @@ namespace WPFInterface
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtCarId.Text))
+            _carManager.Delete(new Car
             {
-                _carManager.Delete(new Car
-                {
-                    Id = Convert.ToInt32(TxtCarId.Text),
-                    //Id = _selectedDto2.CarId,
-                    BrandId = Convert.ToInt32(CbxBrand.SelectedValue),
-                    ColorId = Convert.ToInt32(CbxColor.SelectedValue),
-                    ModelYear = TxtModelYear.Text,
-                    DailyPrice = Convert.ToDecimal(TxtDailyPrice.Text),
-                    Description = TxtDescription.Text
-                });
-                LoadCars();
-            }
+                Id = ((CarDetailDto)DataGridCars.SelectedItem).CarId
+                //Id = Convert.ToInt32(TxtCarId.Text),
+                ////Id = _selectedDto2.CarId,
+                //BrandId = Convert.ToInt32(CbxBrand.SelectedValue),
+                //ColorId = Convert.ToInt32(CbxColor.SelectedValue),
+                //ModelYear = TxtModelYear.Text,
+                //DailyPrice = Convert.ToDecimal(TxtDailyPrice.Text),
+                //Description = TxtDescription.Text
+            });
+            LoadCars();
+        }
+
+        private void CbxFilterType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //_carManager.GetCarDetails(cd=>cd.)
         }
     }
 }

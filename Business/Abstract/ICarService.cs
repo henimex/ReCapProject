@@ -12,6 +12,7 @@ namespace Business.Abstract
         List<Car> GetAllByBrandId(int brandId);
         List<Car> GetAllByPrice(decimal min, decimal max);
         List<CarDetailDto> GetCarDetails();
+        //List<CarDetailDto> GetCarDetails(string carName);
         void Add(Car car);
         void Update(Car car);
         void Delete(Car car);

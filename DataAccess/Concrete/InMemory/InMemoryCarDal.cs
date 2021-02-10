@@ -68,6 +68,11 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
+        public List<CarDetailDto> GetCarDetails2(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAllByColorId(int colorId)
         {
             return _cars.Where(p => p.ColorId == colorId).ToList();
