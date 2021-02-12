@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entites.Concrete;
 
@@ -15,39 +17,37 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
-        public Brand GetById(int brandId)
+        public IDataResult<Brand> GetById(int brandId)
         {
-            return _brandDal.Get(p => p.Id == brandId);
+            return new SuccessDataResult<Brand>(_brandDal.Get(p => p.Id == brandId));
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             if (brand.BrandName.Length >= 2)
             {
                 _brandDal.Add(brand);
-                Console.WriteLine("Brand {0} Added", brand.BrandName);
+                return new SuccessResult(Messages.Added);
+                
             }
-            else
-            {
-                Console.WriteLine("Brand Name characters must be 2 or more characters");
-            }
+            return new ErrorResult(Messages.BrandNameInvalid);
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
-            Console.WriteLine("Brand {0} Updated", brand.BrandName);
+            return new SuccessResult(Messages.Updated);
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            Console.WriteLine("Brand {0} Deleted", brand.BrandName);
+            return new SuccessResult(Messages.Deleted);
         }
     }
 }
