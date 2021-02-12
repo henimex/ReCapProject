@@ -49,7 +49,8 @@ namespace WPFInterface
         {
             //_cars = _carManager.GetAll();
             //DataGridCars.ItemsSource = _cars;
-            DataGridCars.ItemsSource = _carManager.GetCarDetails();
+            var result = _carManager.GetCarDetails();
+            DataGridCars.ItemsSource = result.Data;
         }
 
         private void DataGridCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,11 +110,12 @@ namespace WPFInterface
         {
             try
             {
-                CbxBrand.ItemsSource = _brandManager.GetAll();
+                var resultBrands = _brandManager.GetAll();
+                CbxBrand.ItemsSource = resultBrands.Data;
                 CbxBrand.DisplayMemberPath = "BrandName";
                 CbxBrand.SelectedValuePath = "Id";
 
-                CbxFilterType.ItemsSource = _brandManager.GetAll();
+                CbxFilterType.ItemsSource = resultBrands.Data;
                 CbxFilterType.DisplayMemberPath = "BrandName";
                 CbxFilterType.SelectedValuePath = "Id";
 
@@ -128,7 +130,8 @@ namespace WPFInterface
         {
             try
             {
-                CbxColor.ItemsSource = _colorManager.GetAll();
+                var resultColors = _colorManager.GetAll();
+                CbxColor.ItemsSource = resultColors.Data;
                 CbxColor.DisplayMemberPath = "ColorName";
                 CbxColor.SelectedValuePath = "Id";
             }

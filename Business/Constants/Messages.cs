@@ -13,5 +13,7 @@ namespace Business.Constants
         public static string DailyPrice = "Daily Price Must Be Greater Than Zero(0)";
         public static string Updated = "Updated Successfully";
         public static string Deleted = "Deleted Successfully";
+        public static string ColorsListed;
+        public static string NameInvalid;
     }
 }
