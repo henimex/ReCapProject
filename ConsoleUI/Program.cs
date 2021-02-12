@@ -63,8 +63,8 @@ namespace ConsoleUI
                 {
                     Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
                         car.Id,
-                        car.BrandId,
-                        car.ColorId,
+                        brandManager.GetById(car.BrandId).Data.BrandName,
+                        colorManager.GetById(car.ColorId).Data.ColorName,
                         car.ModelYear,
                         car.DailyPrice.ToString("##.## TL"),
                         car.Description);
@@ -86,8 +86,8 @@ namespace ConsoleUI
                 {
                     Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
                         car.Id,
-                        car.BrandId,
-                        car.ColorId,
+                        brandManager.GetById(car.BrandId).Data.BrandName,
+                        colorManager.GetById(car.ColorId).Data.ColorName,
                         car.ModelYear,
                         car.DailyPrice.ToString("##.## TL"),
                         car.Description);
@@ -108,8 +108,8 @@ namespace ConsoleUI
                 {
                     Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
                         car.Id,
-                        car.BrandId,
-                        car.ColorId,
+                        brandManager.GetById(car.BrandId).Data.BrandName,
+                        colorManager.GetById(car.ColorId).Data.ColorName,
                         car.ModelYear,
                         car.DailyPrice.ToString("##.## TL"),
                         car.Description);
@@ -129,8 +129,8 @@ namespace ConsoleUI
                 {
                     Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t\t{5}",
                         car.Id,
-                        car.BrandId,
-                        car.ColorId,
+                        brandManager.GetById(car.BrandId).Data.BrandName,
+                        colorManager.GetById(car.ColorId).Data.ColorName,
                         car.ModelYear,
                         car.DailyPrice.ToString("##.## TL"),
                         car.Description);
