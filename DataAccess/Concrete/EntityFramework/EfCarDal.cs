@@ -71,8 +71,15 @@ namespace DataAccess.Concrete.EntityFramework
                     return result.ToList();
                 }
             }
-            
         }
+
+        //public List<CarDetailDto> GetCarDetails2(Expression<Func<CarDetailDto, bool>> filter = null)
+        //{
+        //    using (HenRentACarContext context = new HenRentACarContext())
+        //    {
+        //        return filter == null ? context.Set<CarDetailDto>().ToList() : context.Set<CarDetailDto>().Where(filter).ToList();
+        //    }
+        //}
     }
 
     //return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();

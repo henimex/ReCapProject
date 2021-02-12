@@ -15,6 +15,9 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             CarManager carManager = new CarManager(new EfCarDal());
+            UserManager userManager = new UserManager(new EfUserDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
             //colorManager.Add(new Color { ColorName = "White" });
             //colorManager.Add(new Color { ColorName = "Silver" });
@@ -34,6 +37,16 @@ namespace ConsoleUI
             //carManager.Add(new Car{BrandId = 3,ColorId = 3,DailyPrice = 500,Description = "Available", ModelYear = "2017"});
             //carManager.Add(new Car{BrandId = 4,ColorId = 5,DailyPrice = 750,Description = "Available", ModelYear = "2019"});
 
+            //var resultAddUser = userManager.Add(new User{FirstName = "John", LastName = "Wick", Email = "jwick@gmail.com", Password = "12345"});
+            //Console.WriteLine(resultAddUser.Message);
+
+            //var resultAddCustomer = customerManager.Add(new Customer {CompanyName = "HenDev", UserId = 1});
+            //Console.WriteLine(resultAddCustomer.Message);
+
+            var resultAddRental = rentalManager.Add(new Rental {CarId = 2, CustomerId = 1, RentDate = DateTime.Now});
+            Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
+
+            /*
             Console.WriteLine("DTO ile Listeleme 9. Gün Ödevi");
 
             var resultCD = carManager.GetCarDetails();
@@ -138,6 +151,7 @@ namespace ConsoleUI
             }
 
             Console.WriteLine("\n-----------------------End of List---------------------------------");
+            */
         }
 
         //private static void RefactoredMethod()
