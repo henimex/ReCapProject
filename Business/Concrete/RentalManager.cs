@@ -38,14 +38,6 @@ namespace Business.Concrete
         {
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.Added);
-
-            //if (rental.RentDate >= DateTime.Now && rental.ReturnDate <= DateTime.Now)
-            //{
-            //    _rentalDal.Add(rental);
-            //    return new SuccessResult(Messages.Added);
-            //}
-
-            //return new ErrorResult(Messages.RentingDate);
         }
 
         public IResult Update(Rental rental)

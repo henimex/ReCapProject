@@ -45,7 +45,7 @@ namespace ConsoleUI
             DateTime sysTime = DateTime.Now;
 
 
-            var resultAddRental = rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
+            var resultAddRental = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
             Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
 
             var resultRental = rentalManager.GetDetailedRentals();
@@ -53,7 +53,6 @@ namespace ConsoleUI
             {
                 foreach (var carRentsDto in resultRental.Data)
                 {
-                    Console.WriteLine(carRentsDto.RentDate + " " + carRentsDto.ReturnDate);
                     Console.WriteLine(carRentsDto.RentDate + " " + carRentsDto.ReturnDate);
                 }
             }
