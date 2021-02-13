@@ -5,7 +5,7 @@ using Entites.DTOs;
 
 namespace Business.Abstract
 {
-    public interface ICarService
+    public interface ICarService 
     {
         IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetAllByColorId(int colorId);
