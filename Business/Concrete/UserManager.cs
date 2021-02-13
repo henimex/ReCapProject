@@ -42,7 +42,7 @@ namespace Business.Concrete
                 return new SuccessDataResult<User>(_userDal.Get(u => u.Id == userId), Messages.ItemsListed);
             }
             //Its Always True But I just put this one for an example
-            return new ErrorDataResult<User>(Messages.ReuqiredParamIsNull);
+            return new ErrorDataResult<User>(Messages.RequiredParamIsNull);
         }
 
         public IResult Update(User user)

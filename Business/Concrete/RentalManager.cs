@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
@@ -32,6 +33,29 @@ namespace Business.Concrete
         public IDataResult<List<CarRentsDto>> GetDetailedRentals()
         {
             return new SuccessDataResult<List<CarRentsDto>>(_rentalDal.GetRentalDetails(), Messages.ItemsListed);
+        }
+
+        public IResult GetCarStatus(int carId)
+        {
+            if (_rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null).Count > 0)
+            {
+                return new ErrorResult(Messages.CarAlreadyRented);
+            }
+
+            return new SuccessResult();
+        }
+
+        public IResult RentedCarReturned(int carId)
+        {
+            var result = _rentalDal.GetAll(r => r.CarId == carId);
+            var returnDate = result.LastOrDefault();
+            if (returnDate == null)
+            {
+                returnDate.ReturnDate = DateTime.Now;
+                return new SuccessResult(Messages.CarDelivered);
+            }
+
+            return new ErrorResult(Messages.CarReturnError);
         }
 
         public IResult Add(Rental rental)

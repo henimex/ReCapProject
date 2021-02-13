@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Entites.Concrete;
+using Entites.DTOs;
 
 namespace Business.Constants
 {
@@ -17,8 +18,9 @@ namespace Business.Constants
         public static string ColorsListed = "All Available Colors Are Listed";
         public static string NameInvalid = "Name Is Invalid or too Short";
         public static string ItemsListed = "Items Listed";
-        public static string ReuqiredParamIsNull = "Given Parameter Type is Wrong Or Null";
+        public static string RequiredParamIsNull = "Given Parameter Type is Wrong Or Null";
         public static string SingleResult = "Your Request Completed Successfully";
         public static string RentingDate = "Rent Date Cant be Earlier Than Today and Must be Returned";
+        public static string CarAlreadyRented = "Car is Already Rented. Need to be Returned First";
     }
 }
