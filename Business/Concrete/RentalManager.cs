@@ -39,20 +39,22 @@ namespace Business.Concrete
         {
             if (_rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null).Count > 0)
             {
-                return new ErrorResult(Messages.CarAlreadyRented);
+                return new SuccessResult(Messages.CarInRent);
             }
 
-            return new SuccessResult();
+            return new ErrorResult(Messages.AvailableForRent);
         }
 
         public IResult RentedCarReturned(int carId)
         {
             var result = _rentalDal.GetAll(r => r.CarId == carId);
             var returnDate = result.LastOrDefault();
-            if (returnDate == null)
+            if (returnDate.ReturnDate == null)
             {
                 returnDate.ReturnDate = DateTime.Now;
+                _rentalDal.Update(returnDate);
                 return new SuccessResult(Messages.CarDelivered);
+                
             }
 
             return new ErrorResult(Messages.CarReturnError);

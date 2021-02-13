@@ -22,5 +22,9 @@ namespace Business.Constants
         public static string SingleResult = "Your Request Completed Successfully";
         public static string RentingDate = "Rent Date Cant be Earlier Than Today and Must be Returned";
         public static string CarAlreadyRented = "Car is Already Rented. Need to be Returned First";
+        public static string CarDelivered = "Car Delivered";
+        public static string CarReturnError = "Car Deliver Failed";
+        public static string CarInRent = "Car In Rent";
+        public static string AvailableForRent = "Car is Available For Rent";
     }
 }

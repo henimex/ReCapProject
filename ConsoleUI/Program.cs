@@ -42,11 +42,26 @@ namespace ConsoleUI
 
             //var resultAddCustomer = customerManager.Add(new Customer {CompanyName = "HenDev", UserId = 1});
             //Console.WriteLine(resultAddCustomer.Message);
-            DateTime sysTime = DateTime.Now;
+          
+            //var resultAddRental = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
+            //Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
 
+            var resultDelvierCar = rentalManager.GetCarStatus(1);
+            if (resultDelvierCar.Success)
+            {
+                Console.WriteLine("Car in Rent");
+            }
+            else
+            {
+                Console.WriteLine("Car Available For Rent");
+            }
 
-            var resultAddRental = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
-            Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
+            var resutlReturnedCar = rentalManager.RentedCarReturned(4);
+            if (resultDelvierCar.Success)
+            {
+                rentalManager.RentedCarReturned(4);
+
+            }
 
             var resultRental = rentalManager.GetDetailedRentals();
             if (resultRental.Success)
