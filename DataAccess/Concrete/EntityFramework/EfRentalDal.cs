@@ -17,9 +17,23 @@ namespace DataAccess.Concrete.EntityFramework
             using (HenRentACarContext context = new HenRentACarContext())
             {
                 var result = from rnt in filter is null ? context.Rentals : context.Rentals.Where(filter)
-                    join br in context.Brands on rnt.
+                    join c in context.Cars on rnt.CarId equals c.Id
+                    join cu in context.Customers on rnt.CustomerId equals cu.Id
+                    join br in context.Brands on c.BrandId equals br.Id
+                    join us in context.Users on cu.UserId equals us.Id
+                    select new CarRentsDto
+                    {
+                        Id = rnt.Id,
+                        CarId = c.Id,
+                        BrandName = br.BrandName,
+                        CustomerName = us.FirstName,
+                        CustomerSurname = us.LastName,
+                        CustomerMail = us.Email,
+                        Company = cu.CompanyName,
+                        DailyPrice = c.DailyPrice
+                    };
+                return result.ToList();
             }
-            
         }
     }
 }

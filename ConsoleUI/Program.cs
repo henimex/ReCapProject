@@ -42,9 +42,21 @@ namespace ConsoleUI
 
             //var resultAddCustomer = customerManager.Add(new Customer {CompanyName = "HenDev", UserId = 1});
             //Console.WriteLine(resultAddCustomer.Message);
+            DateTime sysTime = DateTime.Now;
 
-            var resultAddRental = rentalManager.Add(new Rental {CarId = 2, CustomerId = 1, RentDate = DateTime.Now});
+
+            var resultAddRental = rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
             Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
+
+            var resultRental = rentalManager.GetDetailedRentals();
+            if (resultRental.Success)
+            {
+                foreach (var carRentsDto in resultRental.Data)
+                {
+                    Console.WriteLine(carRentsDto.RentDate + " " + carRentsDto.ReturnDate);
+                    Console.WriteLine(carRentsDto.RentDate + " " + carRentsDto.ReturnDate);
+                }
+            }
 
             /*
             Console.WriteLine("DTO ile Listeleme 9. Gün Ödevi");

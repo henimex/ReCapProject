@@ -6,6 +6,7 @@ using Business.Constants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entites.Concrete;
+using Entites.DTOs;
 
 namespace Business.Concrete
 {
@@ -28,15 +29,23 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == rentalId), Messages.SingleResult);
         }
 
+        public IDataResult<List<CarRentsDto>> GetDetailedRentals()
+        {
+            return new SuccessDataResult<List<CarRentsDto>>(_rentalDal.GetRentalDetails(), Messages.ItemsListed);
+        }
+
         public IResult Add(Rental rental)
         {
-            if (rental.RentDate >= DateTime.Now && rental.ReturnDate <= DateTime.Now)
-            {
-                _rentalDal.Add(rental);
-                return new SuccessResult(Messages.Added);
-            }
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.Added);
 
-            return new ErrorResult(Messages.RentingDate);
+            //if (rental.RentDate >= DateTime.Now && rental.ReturnDate <= DateTime.Now)
+            //{
+            //    _rentalDal.Add(rental);
+            //    return new SuccessResult(Messages.Added);
+            //}
+
+            //return new ErrorResult(Messages.RentingDate);
         }
 
         public IResult Update(Rental rental)

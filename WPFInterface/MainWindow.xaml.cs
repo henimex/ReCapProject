@@ -103,7 +103,6 @@ namespace WPFInterface
                     MessageBox.Show(exception.Message + " " + exception.InnerException);
                 }
             }
-
         }
 
         void ListBrand()
@@ -199,6 +198,12 @@ namespace WPFInterface
         private void CbxFilterType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //_carManager.GetCarDetails(cd=>cd.)
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Rentals RPage = new Rentals();
+            RPage.ShowDialog();
         }
     }
 }
