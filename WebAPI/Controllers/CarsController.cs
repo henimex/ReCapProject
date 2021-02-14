@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Entites.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
@@ -24,35 +19,25 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
+            if (result.Success) return Ok(result);
 
             return BadRequest(result);
         }
 
         [HttpGet("get-by-id")]
-        public IActionResult Get(int Id)
+        public IActionResult Get(int id)
         {
-            var result = _carService.GetById(Id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
+            var result = _carService.GetById(id);
+            if (result.Success) return Ok(result);
 
             return BadRequest(result);
         }
-        
 
         [HttpPost("add")]
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
+            if (result.Success) return Ok(result);
 
             return BadRequest(result);
         }
