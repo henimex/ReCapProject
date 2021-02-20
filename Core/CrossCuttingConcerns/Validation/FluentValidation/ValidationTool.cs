@@ -1,11 +1,11 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FluentValidation;
 
-namespace Business.ValidationRules.FluentValidation
+namespace Core.CrossCuttingConcerns.Validation.FluentValidation
 {
-    public static class ValidationTools
+    public static class ValidationTool
     {
         public static void Validate(IValidator validator, object entity)
         {

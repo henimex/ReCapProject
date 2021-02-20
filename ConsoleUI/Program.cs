@@ -45,6 +45,9 @@ namespace ConsoleUI
           
             //var resultAddRental = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now , ReturnDate = null});
             //Console.WriteLine(resultAddRental.Success + resultAddRental.Message);
+            var testRes = userManager.Update(new User {Id = 2, FirstName = "test", LastName = "test2", Password = "2222", Email = "henimex@gmail"});
+            Console.WriteLine(testRes.Message);
+            Console.WriteLine(testRes.Success);
 
             var resultDelvierCar = rentalManager.GetCarStatus(1);
             if (resultDelvierCar.Success)

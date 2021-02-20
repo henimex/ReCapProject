@@ -30,13 +30,8 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-                return new SuccessResult(Messages.Added);
-            }
-
-            return new ErrorResult(Messages.DailyPrice);
+            _carDal.Add(car);
+            return new SuccessResult(Messages.Added);
         }
 
         public IResult Update(Car car)

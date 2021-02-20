@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entites.Concrete;
@@ -21,13 +23,13 @@ namespace Business.Concrete
         public IResult Add(User user)
         {
             _userDal.Add(user);
-            return new SuccessResult(Messages.Added);
+            return new SuccessResult($"{user.GetType().Name} {Messages.Added}");
         }
 
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessResult($"{user.GetType().Name} {Messages.Deleted}");
         }
 
         public IDataResult<List<User>> GetAll()
@@ -47,18 +49,9 @@ namespace Business.Concrete
 
         public IResult Update(User user)
         {
-            if (DateTime.Now.Hour != 23)
-            {
-                if (user.FirstName.Length > 2 )
-                {
-                    _userDal.Update(user);
-                    return new SuccessResult(Messages.Updated);
-                }
-
-                return new ErrorResult(Messages.NameInvalid);
-            }
-
-            return new ErrorResult(Messages.MaintenanceTime);
+            ValidationTool.Validate(new UserValidator(), user);
+            _userDal.Update(user);
+            return new SuccessResult($"{user.GetType().Name} {Messages.Updated}");
         }
     }
 }

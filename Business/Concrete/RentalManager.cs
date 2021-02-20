@@ -54,7 +54,6 @@ namespace Business.Concrete
                 returnDate.ReturnDate = DateTime.Now;
                 _rentalDal.Update(returnDate);
                 return new SuccessResult(Messages.CarDelivered);
-                
             }
 
             return new ErrorResult(Messages.CarReturnError);
