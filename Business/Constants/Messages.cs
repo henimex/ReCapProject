@@ -26,6 +26,7 @@ namespace Business.Constants
         public static string CarReturnError = "Car Deliver Failed.";
         public static string CarInRent = "Car In Rent.";
         public static string AvailableForRent = "Car is Available For Rent.";
-        public static string NotNull="Can't be Null or Empty & At least 4 Character Required.";
+        public static string NotNull = "Can't be Null or Empty & At least 4 Character Required.";
+        public static string ImageLimitPerCar = $"Image Limit Per Car is {OptionVariables.MaxImagePerCar}. You can't add any more pictures for this car.";
     }
 }

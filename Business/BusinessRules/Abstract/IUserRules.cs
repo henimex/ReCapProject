@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Concrete
+namespace Business.BusinessRules.Abstract
 {
-    public class SelfTestManager
+    public interface IUserRules
     {
     }
 }
