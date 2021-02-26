@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Business.Abstract;
 
 namespace WebAPI.Helpers
 {
-    public class ImageUpload : IImageUpload
+    public class ImageUpload
     {
-        private string ImagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
+        private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
 
         public string UploadImage(IFormFile imageFile)
         {
@@ -18,15 +14,12 @@ namespace WebAPI.Helpers
             {
                 if (imageFile.Length > 0)
                 {
-                    if (!Directory.Exists(ImagePath))
-                    {
-                        Directory.CreateDirectory(ImagePath);
-                    }
+                    if (!Directory.Exists(_imagePath)) Directory.CreateDirectory(_imagePath);
 
-                    FileInfo fileInfo = new FileInfo(ImagePath + imageFile.FileName);
+                    FileInfo fileInfo = new FileInfo(_imagePath + imageFile.FileName);
                     var fileExtension = fileInfo.Extension;
                     var gName = Guid.NewGuid().ToString("n");
-                    var filePath = ImagePath + gName + fileExtension;
+                    var filePath = _imagePath + gName + fileExtension;
                     
                     using (FileStream fileStream = File.Create(filePath))
                     {

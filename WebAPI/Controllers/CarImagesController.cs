@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constants;
 using Entites.Concrete;
 using WebAPI.Helpers;
 
@@ -15,13 +16,11 @@ namespace WebAPI.Controllers
     public class CarImagesController : ControllerBase
     {
         private ICarImageService _carImageService;
-        //private IImageUpload _imageUpload;
         private ImageUpload _imageUpload = new ImageUpload();
         
         public CarImagesController(ICarImageService carImageService/*, ImageUpload imageUpload*/)
         {
             _carImageService = carImageService;
-            //_imageUpload = imageUpload;
         }
 
         [HttpGet("get-all")]
@@ -66,7 +65,7 @@ namespace WebAPI.Controllers
             string imagePath = _imageUpload.UploadImage(image);
             if (imagePath == "0")
             {
-                BadRequest("Could not get image");
+                BadRequest(Messages.NullImagePath);
             }
             carImage.Date = DateTime.Now;
             carImage.ImagePath = imagePath;
