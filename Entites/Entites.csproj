@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="Assets\" />
+    <Folder Include="Assets\CarImages\" />
   </ItemGroup>
 
   <ItemGroup>

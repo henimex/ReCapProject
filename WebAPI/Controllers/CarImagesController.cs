@@ -6,18 +6,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entites.Concrete;
+using WebAPI.Helpers;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarImages : ControllerBase
+    public class CarImagesController : ControllerBase
     {
         private ICarImageService _carImageService;
-
-        public CarImages(ICarImageService carImageService)
+        //private IImageUpload _imageUpload;
+        private ImageUpload _imageUpload = new ImageUpload();
+        
+        public CarImagesController(ICarImageService carImageService/*, ImageUpload imageUpload*/)
         {
             _carImageService = carImageService;
+            //_imageUpload = imageUpload;
         }
 
         [HttpGet("get-all")]
@@ -53,6 +57,21 @@ namespace WebAPI.Controllers
             var result = _carImageService.Add(carImage);
             if (result.Success) return Ok(result);
             
+            return BadRequest(result);
+        }
+
+        [HttpPost("addImage")]
+        public IActionResult AddImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            string imagePath = _imageUpload.UploadImage(image);
+            if (imagePath == "0")
+            {
+                BadRequest("Could not get image");
+            }
+            carImage.Date = DateTime.Now;
+            carImage.ImagePath = imagePath;
+            var result = _carImageService.Add(carImage);
+            if (result.Success) return Ok(result);
             return BadRequest(result);
         }
 
