@@ -47,8 +47,8 @@
             <Button Content="Button" HorizontalAlignment="Left" Margin="593,50,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
         </Grid>
-        <dx:SimpleButton x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Height="37" Margin="25,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnAdd_Click"/>
-        <dx:SimpleButton x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Height="37" Margin="168,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnUpdate_Click"/>
-        <dx:SimpleButton x:Name="BtnDelete" Content="Delete" HorizontalAlignment="Left" Height="37" Margin="311,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnDelete_Click"/>
+        <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Height="37" Margin="25,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnAdd_Click"/>
+        <Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Height="37" Margin="168,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnUpdate_Click"/>
+        <Button x:Name="BtnDelete" Content="Delete" HorizontalAlignment="Left" Height="37" Margin="311,97,0,0" VerticalAlignment="Top" Width="138" Click="BtnDelete_Click"/>
     </Grid>
 </Window>
