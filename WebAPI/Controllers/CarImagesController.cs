@@ -62,15 +62,21 @@ namespace WebAPI.Controllers
         [HttpPost("addImage")]
         public IActionResult AddImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
         {
-            string imagePath = _imageUpload.UploadImage(image);
+            string imagePath = _imageUpload.CreatePath(image);
             if (imagePath == "0")
             {
                 BadRequest(Messages.NullImagePath);
             }
             carImage.Date = DateTime.Now;
             carImage.ImagePath = imagePath;
+            //carImage.CarId = 1;
             var result = _carImageService.Add(carImage);
-            if (result.Success) return Ok(result);
+            if (result.Success)
+            {
+                _imageUpload.CopyFile(image,imagePath);
+                return Ok(result);
+            }
+
             return BadRequest(result);
         }
 

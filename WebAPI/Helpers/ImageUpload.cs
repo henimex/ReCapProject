@@ -9,6 +9,7 @@ namespace WebAPI.Helpers
     {
         private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
         private ICarImageService _carImageService;
+        private string _filePath = "";
 
         public ImageUpload(ICarImageService carImageService)
         {
@@ -19,7 +20,7 @@ namespace WebAPI.Helpers
         {
         }
 
-        public string UploadImage(IFormFile imageFile,int imageId=0)
+        public string UploadImage(IFormFile imageFile, int imageId = 0)
         {
             try
             {
@@ -31,14 +32,13 @@ namespace WebAPI.Helpers
                     var fileExtension = fileInfo.Extension;
                     var gName = Guid.NewGuid().ToString("n");
                     var filePath = _imagePath + gName + fileExtension;
-                    
+
                     using (FileStream fileStream = File.Create(filePath))
                     {
                         imageFile.CopyTo(fileStream);
                         fileStream.Flush();
-                        DeleteImageIfExists(imageId);
                     }
-                    
+
                     return filePath;
                 }
             }
@@ -50,17 +50,55 @@ namespace WebAPI.Helpers
             return null;
         }
 
-        public void DeleteImageIfExists(int Id)
+        public string CreatePath(IFormFile imageFile)
         {
-            var result = _carImageService.GetById(Id);
-            if (result.Success)
+            try
             {
-                var fileToDelete = result.Data.ImagePath;
-                File.Delete(fileToDelete);
-                //return true;
+                if (imageFile.Length > 0)
+                {
+                    if (!Directory.Exists(_imagePath)) Directory.CreateDirectory(_imagePath);
+                    FileInfo fileInfo = new FileInfo(_imagePath + imageFile.FileName);
+                    var fileExtension = fileInfo.Extension;
+                    var gName = Guid.NewGuid().ToString("n");
+                    var filePath = _imagePath + gName + fileExtension;
+                    return filePath;
+                }
             }
-            
-            //return false;
+            catch (Exception)
+            {
+                return "0";
+            }
+
+            return null;
+        }
+
+        public void CopyFile(IFormFile imageFile, string filePath)
+        {
+            using (FileStream fileStream = File.Create(filePath))
+            {
+                imageFile.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+        }
+
+        public void DeleteImageIfExists(int createdImageId)
+        {
+            try
+            {
+                var result = _carImageService.GetById(createdImageId);
+                if (result.Success)
+                {
+                    var fileToDelete = result.Data.ImagePath;
+                    File.Delete(fileToDelete);
+                    //return true;
+                }
+
+                //return false;
+            }
+            catch (Exception )
+            {
+            }
+
         }
     }
 }
