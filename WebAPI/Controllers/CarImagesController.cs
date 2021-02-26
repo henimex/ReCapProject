@@ -83,6 +83,21 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("updateImage")]
+        public IActionResult UpdateImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            string imagePath = _imageUpload.UploadImage(image, carImage.Id);
+            if (imagePath == "0")
+            {
+                BadRequest(Messages.NullImagePath);
+            }
+            carImage.Date = DateTime.Now;
+            carImage.ImagePath = imagePath;
+            var result = _carImageService.Update(carImage);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
+
         [HttpPost("delete")]
         public IActionResult Delete(CarImage carImage)
         {

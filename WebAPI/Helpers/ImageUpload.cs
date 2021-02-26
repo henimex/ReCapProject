@@ -1,14 +1,25 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
+using Business.Abstract;
 
 namespace WebAPI.Helpers
 {
     public class ImageUpload
     {
         private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
+        private ICarImageService _carImageService;
 
-        public string UploadImage(IFormFile imageFile)
+        public ImageUpload(ICarImageService carImageService)
+        {
+            _carImageService = carImageService;
+        }
+
+        public ImageUpload()
+        {
+        }
+
+        public string UploadImage(IFormFile imageFile,int imageId=0)
         {
             try
             {
@@ -25,7 +36,9 @@ namespace WebAPI.Helpers
                     {
                         imageFile.CopyTo(fileStream);
                         fileStream.Flush();
+                        DeleteImageIfExists(imageId);
                     }
+                    
                     return filePath;
                 }
             }
@@ -35,6 +48,19 @@ namespace WebAPI.Helpers
             }
 
             return null;
+        }
+
+        public void DeleteImageIfExists(int Id)
+        {
+            var result = _carImageService.GetById(Id);
+            if (result.Success)
+            {
+                var fileToDelete = result.Data.ImagePath;
+                File.Delete(fileToDelete);
+                //return true;
+            }
+            
+            //return false;
         }
     }
 }
