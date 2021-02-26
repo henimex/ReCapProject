@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         private ICarImageService _carImageService;
         private ImageUpload _imageUpload = new ImageUpload();
         
-        public CarImagesController(ICarImageService carImageService/*, ImageUpload imageUpload*/)
+        public CarImagesController(ICarImageService carImageService)
         {
             _carImageService = carImageService;
         }
