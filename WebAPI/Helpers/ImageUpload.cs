@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using Business.Abstract;
+using Entites.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Helpers
 {
@@ -69,6 +71,7 @@ namespace WebAPI.Helpers
                 return "0";
             }
 
+
             return null;
         }
 
@@ -99,6 +102,37 @@ namespace WebAPI.Helpers
             {
             }
 
+        }
+
+        public void DeleteImageIfExists2(string path)
+        {
+            File.Delete(path);
+        }
+
+        public CarImage CreatePath2([FromForm] CarImage carImage, IFormFile imageFile)
+        {
+            string imagePath = "";
+            try
+            {
+                if (imageFile.Length > 0)
+                {
+                    if (!Directory.Exists(_imagePath)) Directory.CreateDirectory(_imagePath);
+                    FileInfo fileInfo = new FileInfo(_imagePath + imageFile.FileName);
+                    var fileExtension = fileInfo.Extension;
+                    var gName = Guid.NewGuid().ToString("n");
+                    var filePath = _imagePath + gName + fileExtension;
+                    imagePath = filePath;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Image Path Is Null or Empty");
+            }
+
+            carImage.Date = DateTime.Now;
+            carImage.ImagePath = imagePath;
+            carImage.CarId = carImage.CarId;
+            return carImage;
         }
     }
 }

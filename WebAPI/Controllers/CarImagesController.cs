@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
     {
         private ICarImageService _carImageService;
         private ImageUpload _imageUpload = new ImageUpload();
-        
+
         public CarImagesController(ICarImageService carImageService)
         {
             _carImageService = carImageService;
@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
         {
             var result = _carImageService.Add(carImage);
             if (result.Success) return Ok(result);
-            
+
             return BadRequest(result);
         }
 
@@ -73,7 +73,22 @@ namespace WebAPI.Controllers
             var result = _carImageService.Add(carImage);
             if (result.Success)
             {
-                _imageUpload.CopyFile(image,imagePath);
+                _imageUpload.CopyFile(image, imagePath);
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("addImage3")]
+        public IActionResult AddImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            var tempImage = _imageUpload.CreatePath2(carImage, image);
+
+            var result = _carImageService.Add(tempImage);
+            if (result.Success)
+            {
+                _imageUpload.CopyFile(image, tempImage.ImagePath);
                 return Ok(result);
             }
 
@@ -101,6 +116,22 @@ namespace WebAPI.Controllers
             carImage.ImagePath = imagePath;
             var result = _carImageService.Update(carImage);
             if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpPost("updateImage3")]
+        public IActionResult UpdateImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            var tempImage = _imageUpload.CreatePath2(carImage, image);
+
+            var result = _carImageService.Update(tempImage);
+            if (result.Success)
+            {
+                _imageUpload.CopyFile(image, tempImage.ImagePath);
+                _imageUpload.DeleteImageIfExists(1);
+                return Ok(result);
+            }
+
             return BadRequest(result);
         }
 
