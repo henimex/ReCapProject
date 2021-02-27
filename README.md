@@ -1,6 +1,3 @@
-<h3><img style="border-width: 2px; border-style: solid; margin: 2px;" src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" alt="" width="100" height="56" /> <a href="https://github.com/henimex/ReCapProject" target="_blank" rel="noopener">Repository Address&nbsp;</a></h3>
-<hr />
-<ol>
 <li><strong>BusinessRules</strong> Classı oluşturularak t&uuml;m iş kuralları buradan &ccedil;ağrılması sağlandı.</li>
 <li>Resim Ekleme Base işlemleri yapıldı.</li>
 <li>Resimler GUID ile proje i&ccedil;erisine kopyalanması ve veri tabanına Path in yazılması sağlandı.&nbsp;</li>
