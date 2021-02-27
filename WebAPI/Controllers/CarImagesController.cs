@@ -45,6 +45,11 @@ namespace WebAPI.Controllers
         public IActionResult GetImagesByCarId(int carId)
         {
             var result = _carImageService.GetImagesByCarId(carId);
+            if (result.Data.Capacity <= 0)
+            {
+                var defaultResult = _carImageService.GetById(7);
+                return Ok(defaultResult);
+            }
             if (result.Success) return Ok(result);
 
             return BadRequest(result);
@@ -123,12 +128,13 @@ namespace WebAPI.Controllers
         public IActionResult UpdateImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
         {
             var tempImage = _imageUpload.CreatePath2(carImage, image);
+            var deletePath = _carImageService.GetById(carImage.Id).Data.ImagePath;
 
             var result = _carImageService.Update(tempImage);
             if (result.Success)
             {
                 _imageUpload.CopyFile(image, tempImage.ImagePath);
-                _imageUpload.DeleteImageIfExists(1);
+                _imageUpload.DeleteImageIfExists2(deletePath);
                 return Ok(result);
             }
 

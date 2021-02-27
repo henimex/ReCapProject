@@ -12,6 +12,7 @@ namespace WebAPI.Helpers
         private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
         private ICarImageService _carImageService;
         private string _filePath = "";
+        private string defaultImagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\" + "default.jpg";
 
         public ImageUpload(ICarImageService carImageService)
         {
