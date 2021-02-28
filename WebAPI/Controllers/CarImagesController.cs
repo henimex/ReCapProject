@@ -150,7 +150,6 @@ namespace WebAPI.Controllers
             var result = _carImageService.Delete(carImage);
             _imageUpload.DeleteImageIfExists2(carImage.ImagePath);
             if (result.Success) return Ok(result);
-
             return BadRequest(result);
         }
 
