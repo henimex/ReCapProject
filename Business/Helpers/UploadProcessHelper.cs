@@ -1,26 +1,23 @@
-﻿using Business.Abstract;
+﻿using System;
+using System.IO;
+using Business.Abstract;
+using Business.Helpers.Abstract;
 using Entites.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.IO;
 
-namespace WebAPI.Helpers
+namespace Business.Helpers
 {
-    public class ImageUpload
+    public class UploadProcessHelper : IUploadProcessHelper
     {
         private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
-        private ICarImageService _carImageService;
+        private readonly ICarImageService _carImageService;
         private string _filePath = "";
-        private string defaultImagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\" + "default.jpg";
+        private string _defaultImagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\" + "default.jpg";
 
-        public ImageUpload(ICarImageService carImageService)
+        public UploadProcessHelper(ICarImageService carImageService)
         {
             _carImageService = carImageService;
-        }
-
-        public ImageUpload()
-        {
         }
 
         public string UploadImage(IFormFile imageFile, int imageId = 0)

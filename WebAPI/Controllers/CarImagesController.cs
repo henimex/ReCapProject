@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants;
+using Business.Helpers.Abstract;
 using Entites.Concrete;
 using WebAPI.Helpers;
 
@@ -16,11 +17,13 @@ namespace WebAPI.Controllers
     public class CarImagesController : ControllerBase
     {
         private ICarImageService _carImageService;
-        private ImageUpload _imageUpload = new ImageUpload();
+        //private ImageUpload _imageUpload = new ImageUpload();
+        private IUploadProcessHelper _imageUpload;
 
-        public CarImagesController(ICarImageService carImageService)
+        public CarImagesController(ICarImageService carImageService, IUploadProcessHelper imageUpload)
         {
             _carImageService = carImageService;
+            _imageUpload = imageUpload;
         }
 
         [HttpGet("get-all")]
@@ -124,7 +127,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("updateImage3")]
+        [HttpPost("updateImage3")]//Postmanden image & Id
         public IActionResult UpdateImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
         {
             var tempImage = _imageUpload.CreatePath2(carImage, image);
@@ -145,9 +148,16 @@ namespace WebAPI.Controllers
         public IActionResult Delete(CarImage carImage)
         {
             var result = _carImageService.Delete(carImage);
+            _imageUpload.DeleteImageIfExists2(carImage.ImagePath);
             if (result.Success) return Ok(result);
 
             return BadRequest(result);
         }
+
+        #region RefactoredCodes
+
+        
+
+        #endregion
     }
 }
