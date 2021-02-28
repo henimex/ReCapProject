@@ -1,3 +1,6 @@
+14. Gün Ödev
+Authorization İşlemleri Eklenecek.
+13.Gün Ödev Sonu:
 <li><strong>BusinessRules</strong> Classı oluşturularak t&uuml;m iş kuralları buradan &ccedil;ağrılması sağlandı.</li>
 <li>Resim Ekleme Base işlemleri yapıldı.</li>
 <li>Resimler GUID ile proje i&ccedil;erisine kopyalanması ve veri tabanına Path in yazılması sağlandı.&nbsp;</li>
@@ -26,4 +29,4 @@
 <ul>
 <li><span style="color: #ff0000;"><strong>[Sorun 5]</strong> </span>ImageUpload işlemlerinin yapıldığı class web abi tarafında newlenerek kullanılabiliyor. Olması gereken yapıya g&ouml;re değiştirilmeye &ccedil;alışılıyor.</li>
 </ul>
-<p style="padding-left: 80px;"><span style="color: #ff6600;"><em><strong>[&Ccedil;&ouml;z&uuml;lmedi 5]</strong></em></span> Araştırılıyor.</p>
+<p style="padding-left: 80px;"><span style="color: #ff6600;"><em><strong>[&Ccedil;&ouml;z&uuml;lmedi 5]</strong></em></span> Dosyalama Islemi Business katmanına alındı Controller kısmındaki kodlar refactor ediliyor..</p>
