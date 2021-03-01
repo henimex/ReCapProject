@@ -1,8 +1,8 @@
-## HenDev Rent A Car
+     HenDev Rent A Car
 
 > ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirlen araç kiralama projesi*
 
-***Güncelleme Geçmişi***
+    Güncelleme Geçmişi
 
 **14.Gün Sonu:**
 - Authorization JWT Entegrasyonu Yapıldı.
@@ -20,7 +20,7 @@
 
 ----------
 
-***Bilnen Hatalar***
+    Bilnen Hatalar
 
 ### v 1.14
  - [ ] Auth Login şifre doğru olmasına rağmen hatalı dönüş yapıyor
@@ -43,6 +43,7 @@
 [Proje Sayfası Kodlama.io](https://www.kodlama.io)
 
 ----
+
 ***SQL Queries***
 
     SELECT * FROM Cars --will be added soon
