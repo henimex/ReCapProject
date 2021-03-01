@@ -35,8 +35,11 @@
 
 ---
 ***Engin Demiroğ'a Sonsuz Teşekkürler.***
+
 [engindemirog Github](https://github.com/engindemirog)
+
 [Engin DEMİROĞ Youtube](https://www.youtube.com/channel/UCRjiquPh4mjPNoOV9eCilXQ)
+
 [Proje Sayfası Kodlama.io](https://www.kodlama.io)
 
 ----
