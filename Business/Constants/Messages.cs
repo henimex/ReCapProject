@@ -29,5 +29,12 @@ namespace Business.Constants
         public static string NotNull = "Can't be Null or Empty & At least 4 Character Required.";
         public static string ImageLimitPerCar = $"Image Limit Per Car is {OptionVariables.MaxImagePerCar}. You can't add any more pictures for this car.";
         public static string NullImagePath = "Could not get image path or image path is null";
+        public static string AuthorizationDenied = "Yetkilendirme reddedildi.";
+        public static string UserRegistered = "Kullanıcı Kaydedildi.";
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string PasswordError = "Hatalı Şifre";
+        public static string SuccessfulLogin = "Giriş Başarılı";
+        public static string UserAlreadyExists = "Kullanıcı Zaten Var";
+        public static string AccessTokenCreated = "Token Oluşturuldu";
     }
 }

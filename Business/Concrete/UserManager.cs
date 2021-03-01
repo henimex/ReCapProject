@@ -5,9 +5,10 @@ using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Entities.Concrete;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
-using Entites.Concrete;
+
 
 namespace Business.Concrete
 {
@@ -52,6 +53,16 @@ namespace Business.Concrete
             ValidationTool.Validate(new UserValidator(), user);
             _userDal.Update(user);
             return new SuccessResult($"{user.GetType().Name} {Messages.Updated}");
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }
