@@ -28,7 +28,7 @@
  ---
 ### v 1.13
 - [X] Validasyon başarılı olsa da olmasa da dosya klasöre kopyalanıyor fakat veri tabanına yazmıyor.
-- [X] Resim Güncelleme işlemi sonrasında path veri tabanına yansıyor.
+- [X] Resim Güncelleme işlemi sonrasında path veri tabanına yansıyor yeni dosyayı kopyalıyor fakat eski dosya silinmiyor.
 - [X] Tüm işlemler ImageUpload tarafında yapılarak Api tarafına sadece CarImage nesnesi döndürmeye çalışılıyor.
 - [X] Araca ait resim olmaması durumunda default image dönmüyor.
 - [X] ImageUpload işlemlerinin yapıldığı class web abi tarafında newlenerek kullanılabiliyor. Olması gereken yapıya göre değiştirilmeye çalışılıyor.
