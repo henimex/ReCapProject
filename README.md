@@ -1,6 +1,6 @@
      HenDev Rent A Car
 
-> ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirlen araç kiralama projesi*
+> ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirilen araç kiralama projesi*
 
     Güncelleme Geçmişi
 
