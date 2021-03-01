@@ -47,3 +47,24 @@
 ***SQL Queries***
 
     SELECT * FROM Cars --will be added soon
+
+----
+
+     Süreç Takibi
+| Gün | Ders Programı | Yayın Linki|
+|--|--|--|
+| 1 | Python Basic | [Day 01](https://www.youtube.com/watch?v=S_A_VVSQdpU&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&ab_channel=EnginDemiro%C4%9F)
+| 2 | Değişkenler, Şart Blokları | [Day 02](https://www.youtube.com/watch?v=FB7VUYLyl1I&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=2&ab_channel=EnginDemiro%C4%9F)
+| 3 | Algoritmik Örnekleme ve Altyapı Pekiştirme | [Day 03](https://www.youtube.com/watch?v=1j68gb1-qOw&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=3&ab_channel=EnginDemiro%C4%9F)
+| 4 | Nesne Yönelimli Programlamaya Giriş |[Day 04](https://www.youtube.com/watch?v=G0sOB_-WkyI&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=4&ab_channel=EnginDemiro%C4%9F)
+| 5 | Nesne Yönelimli Programlamada Uzmanlaşma |[Day 05](https://www.youtube.com/watch?v=MU_YQtgdkKA&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=5&ab_channel=EnginDemiro%C4%9F)
+| 6 | Veritabanı Oluşturma ve Temelleri |[Day 06](https://www.youtube.com/watch?v=r_pbdopB4LU&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=6&ab_channel=EnginDemiro%C4%9F)
+| 7 | LinQ Veri Sorgulama Teknikleri |[Day 07](https://www.youtube.com/watch?v=qBQOqh844Mo&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=7&ab_channel=EnginDemiro%C4%9F)
+| 8 | Entity Framework |[Day 08](https://www.youtube.com/watch?v=ow-EHetuNAU&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=8&ab_channel=EnginDemiro%C4%9F)
+| 9 | Çok Katmanlı Mimariler |[Day 09](https://www.youtube.com/watch?v=Hgqqoycoh9c&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=9&ab_channel=EnginDemiro%C4%9F)
+| 10 | Web API Giriş |[Day 10](https://www.youtube.com/watch?v=NlAj9dT3MiA&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=10&ab_channel=EnginDemiro%C4%9F)
+| 11 | Web API İleri Seviye |[Day 11](https://www.youtube.com/watch?v=LZqMmvgCNx0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=11&ab_channel=EnginDemiro%C4%9F)
+| 12 | Aspects |[Day 12](https://www.youtube.com/watch?v=cSmUHlnHOXI&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=12&ab_channel=EnginDemiro%C4%9F)
+| 13 | İş Kuralları Oluşturma|[Day 13](https://www.youtube.com/watch?v=zdpPm7Q6YE0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=13&ab_channel=EnginDemiro%C4%9F)
+| 14 | Kullanıcı İşlemleri Authorization PasswordHash|[Day 14](https://www.youtube.com/watch?v=2DchBG--kAs&ab_channel=EnginDemiro%C4%9F)
+| 15 | 03.03.2021 Çarşamba 21:00 - ~|Loading|
