@@ -17,7 +17,6 @@ namespace WebAPI.Controllers
     public class CarImagesController : ControllerBase
     {
         private ICarImageService _carImageService;
-        //private ImageUpload _imageUpload = new ImageUpload();
         private IUploadProcessHelper _imageUpload;
 
         public CarImagesController(ICarImageService carImageService, IUploadProcessHelper imageUpload)
@@ -57,38 +56,8 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
+        
         [HttpPost("add")]
-        public IActionResult Add(CarImage carImage)
-        {
-            var result = _carImageService.Add(carImage);
-            if (result.Success) return Ok(result);
-
-            return BadRequest(result);
-        }
-
-        [HttpPost("addImage")]
-        public IActionResult AddImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
-        {
-            string imagePath = _imageUpload.CreatePath(image);
-            if (imagePath == "0")
-            {
-                BadRequest(Messages.NullImagePath);
-            }
-            carImage.Date = DateTime.Now;
-            carImage.ImagePath = imagePath;
-            //carImage.CarId = 1;
-            var result = _carImageService.Add(carImage);
-            if (result.Success)
-            {
-                _imageUpload.CopyFile(image, imagePath);
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-
-        [HttpPost("addImage3")]
         public IActionResult AddImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
         {
             var tempImage = _imageUpload.CreatePath2(carImage, image);
@@ -102,32 +71,8 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
-        [HttpPost("update")]
-        public IActionResult Update(CarImage carImage)
-        {
-            var result = _carImageService.Update(carImage);
-            if (result.Success) return Ok(result);
-
-            return BadRequest(result);
-        }
-
-        [HttpPost("updateImage")]
-        public IActionResult UpdateImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
-        {
-            string imagePath = _imageUpload.UploadImage(image, carImage.Id);
-            if (imagePath == "0")
-            {
-                BadRequest(Messages.NullImagePath);
-            }
-            carImage.Date = DateTime.Now;
-            carImage.ImagePath = imagePath;
-            var result = _carImageService.Update(carImage);
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
-        }
-
-        [HttpPost("updateImage3")]//Postmanden image & Id
+        
+        [HttpPost("update")]//Postmanden image & Id
         public IActionResult UpdateImage3([FromForm] CarImage carImage, [FromForm] IFormFile image)
         {
             var tempImage = _imageUpload.CreatePath2(carImage, image);
@@ -153,9 +98,61 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        #region RefactoredCodes
+        #region OldCodes
 
-        
+        [HttpPost("old-add")]
+        public IActionResult Add(CarImage carImage)
+        {
+            var result = _carImageService.Add(carImage);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("old-addImage")]
+        public IActionResult AddImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            string imagePath = _imageUpload.CreatePath(image);
+            if (imagePath == "0")
+            {
+                BadRequest(Messages.NullImagePath);
+            }
+            carImage.Date = DateTime.Now;
+            carImage.ImagePath = imagePath;
+            //carImage.CarId = 1;
+            var result = _carImageService.Add(carImage);
+            if (result.Success)
+            {
+                _imageUpload.CopyFile(image, imagePath);
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("old-update")]
+        public IActionResult Update(CarImage carImage)
+        {
+            var result = _carImageService.Update(carImage);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("old-updateImage")]
+        public IActionResult UpdateImage([FromForm] CarImage carImage, [FromForm] IFormFile image)
+        {
+            string imagePath = _imageUpload.UploadImage(image, carImage.Id);
+            if (imagePath == "0")
+            {
+                BadRequest(Messages.NullImagePath);
+            }
+            carImage.Date = DateTime.Now;
+            carImage.ImagePath = imagePath;
+            var result = _carImageService.Update(carImage);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
 
         #endregion
     }
