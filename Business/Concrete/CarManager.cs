@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
@@ -28,6 +29,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
+        [SecuredOperation("admin,moderator")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);

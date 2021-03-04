@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
@@ -53,8 +55,13 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            ServiceTool.Create(services);
+            services.AddDependencyResolver(new ICoreModule[]
+            {
+                new CoreModule()
+            });
+
+            #region DisableCodes
+
             //AUTOFAC ile bu tanýmlamadan kurtuluyoruz
             //services.AddSingleton<ICarService, CarManager>();
             //services.AddSingleton<IRentalService, RentalManager>();
@@ -63,13 +70,15 @@ namespace WebAPI
             //services.AddSingleton<ICustomerService, CustomerManager>();
             //services.AddSingleton<IRentalService, RentalManager>();
             //services.AddSingleton<IUserService, UserManager>();
-            
+
             //services.AddSingleton<ICarDal, EfCarDal>();
             //services.AddSingleton<IBrandDal, EfBrandDal>();
             //services.AddSingleton<IColorDal, EfColorDal>();
             //services.AddSingleton<ICustomerDal, EfCustomerDal>();
             //services.AddSingleton<IRentalDal, EfRentalDal>();
             //services.AddSingleton<IUserDal, EfUserDal>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +92,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
