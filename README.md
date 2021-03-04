@@ -48,28 +48,28 @@
 
     SELECT * FROM Cars --will be added soon
 	CREATE TABLE [dbo].[Users]
-(
-    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [FirstName] VARCHAR(50) NOT NULL, 
-    [LastName] VARCHAR(50) NOT NULL, 
-    [Email] VARCHAR(50) NOT NULL, 
-    [PasswordHash] VARBINARY(500) NOT NULL, 
-    [PasswordSalt] VARBINARY(500) NOT NULL, 
-    [Status] BIT NOT NULL
-)
+	(
+	    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	    [FirstName] VARCHAR(50) NOT NULL, 
+	    [LastName] VARCHAR(50) NOT NULL, 
+	    [Email] VARCHAR(50) NOT NULL, 
+	    [PasswordHash] VARBINARY(500) NOT NULL, 
+	    [PasswordSalt] VARBINARY(500) NOT NULL, 
+	    [Status] BIT NOT NULL
+	)
 
-CREATE TABLE [dbo].[OperationClaims]
-(
-    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [Name] VARCHAR(250) NOT NULL
-)
+	CREATE TABLE [dbo].[OperationClaims]
+	(
+	    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	    [Name] VARCHAR(250) NOT NULL
+	)
 
-CREATE TABLE [dbo].[UserOperationClaims]
-(
-    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [UserId] INT NOT NULL, 
-    [OperationClaimId] INT NOT NULL
-)
+	CREATE TABLE [dbo].[UserOperationClaims]
+	(
+	    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	    [UserId] INT NOT NULL, 
+	    [OperationClaimId] INT NOT NULL
+	)
 
 ----
 
@@ -90,4 +90,4 @@ CREATE TABLE [dbo].[UserOperationClaims]
 | 12 | Aspects |[Day 12](https://www.youtube.com/watch?v=cSmUHlnHOXI&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=12&ab_channel=EnginDemiro%C4%9F)
 | 13 | İş Kuralları Oluşturma|[Day 13](https://www.youtube.com/watch?v=zdpPm7Q6YE0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=13&ab_channel=EnginDemiro%C4%9F)
 | 14 | Kullanıcı İşlemleri Authorization PasswordHash|[Day 14](https://www.youtube.com/watch?v=2DchBG--kAs&ab_channel=EnginDemiro%C4%9F)
-| 15 | 03.03.2021 Çarşamba 21:00 - ~|Loading|
+| 15 | Cache, Transaction, API Injection |[Day 15](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
