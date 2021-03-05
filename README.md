@@ -59,6 +59,7 @@
 ***SQL Queries***
 
     SELECT * FROM Cars --will be added soon
+	[SQL Queries](https://github.com/henimex/ReCapProject/blob/master/SQL%20Queries.sql)
 	CREATE TABLE [dbo].[Users]
 	(
 	    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
