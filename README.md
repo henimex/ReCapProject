@@ -57,9 +57,9 @@
 ----
 
 ***SQL Queries***
-
-    SELECT * FROM Cars --will be added soon
-
+[All SQL Queries](https://github.com/henimex/ReCapProject/blob/master/SQL%20Queries.sql)
+	
+	Last Updated Queries
 	CREATE TABLE [dbo].[Users]
 	(
 	    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
@@ -83,7 +83,7 @@
 	    [UserId] INT NOT NULL, 
 	    [OperationClaimId] INT NOT NULL
 	)
-[SQL Queries](https://github.com/henimex/ReCapProject/blob/master/SQL%20Queries.sql)
+
 
 ----
 
