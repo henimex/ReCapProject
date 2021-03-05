@@ -4,6 +4,16 @@
 
     Güncelleme Geçmişi
 
+**16.Gün Sonu:**
+- Frontend...
+
+**15.Gün Sonu:**
+- JWT Entegrasyonu düzenlemesi yapıldı.
+- Caching Aspectleri devreye alınıp test edildi.
+- Basit ama etkili Performans Aspecti hazırlanıp test edildi.
+- Transactional işlemler için altyapı oluşturulup basit durumlar için test senrayosu eklendi.
+- Api Dependency Injectionlar Core tarafında çözümlenmesi sağlandı.
+
 **14.Gün Sonu:**
 - Authorization JWT Entegrasyonu Yapıldı.
 - Login işlemleri sonrası Postman ile Token oluşturulduğu test edildi.
@@ -21,10 +31,12 @@
 ----------
 
     Bilnen Hatalar
-
+### v 1.15
+ - [X] Hata tespit edilmedi.
+ ---
 ### v 1.14
- - [ ] Auth Login şifre doğru olmasına rağmen hatalı dönüş yapıyor
- - [ ] Add Entity Güvenlik adımlarına takılarak ekleme işlemi yapmıyor.
+ - [X] Auth Login şifre doğru olmasına rağmen hatalı dönüş yapıyor.
+ - [X] Add Entity Güvenlik adımlarına takılarak ekleme işlemi yapmıyor.
  ---
 ### v 1.13
 - [X] Validasyon başarılı olsa da olmasa da dosya klasöre kopyalanıyor fakat veri tabanına yazmıyor.

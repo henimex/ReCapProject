@@ -4,6 +4,8 @@ using System.Text;
 using Business.Abstract;
 using Business.BusinessRules.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Utilities.BusinessTools;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
@@ -22,6 +24,8 @@ namespace Business.Concrete
             _carImageRules = carImageRules;
         }
 
+        [PerformanceAspect(5)]
+        [CacheAspect()]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
@@ -37,6 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<CarImage>(_carImageDal.Get(i => i.Id == imageId));
         }
 
+        [CacheRemoveAspect("ICarImageService.Get")]
         public IResult Add(CarImage carImage)
         {
             IResult result = BusinessRuleTool.Run(
@@ -48,6 +53,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
+        [CacheRemoveAspect("ICarImageService.Get")]
         public IResult Update(CarImage carImage)
         {
             _carImageDal.Update(carImage);
