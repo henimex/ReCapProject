@@ -57,6 +57,7 @@
 ----
 
 ***SQL Queries***
+
 [All SQL Queries](https://github.com/henimex/ReCapProject/blob/master/SQL%20Queries.sql)
 	
 	Last Updated Queries
@@ -105,3 +106,4 @@
 | 13 | İş Kuralları Oluşturma|[Day 13](https://www.youtube.com/watch?v=zdpPm7Q6YE0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=13&ab_channel=EnginDemiro%C4%9F)
 | 14 | Kullanıcı İşlemleri Authorization PasswordHash|[Day 14](https://www.youtube.com/watch?v=2DchBG--kAs&ab_channel=EnginDemiro%C4%9F)
 | 15 | Cache, Transaction, API Injection |[Day 15](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
+| 16 | Frontend *Angular* |[Loading 06.03.2021 21:00](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
