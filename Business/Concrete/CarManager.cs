@@ -24,12 +24,22 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAllByPrice(decimal min, decimal max)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.DailyPrice >= min && x.DailyPrice <= max));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrand(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(x => x.BrandId == brandId));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColor(int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(x => x.ColorId == colorId));
         }
 
         public IResult AddTransactional(Car car)
@@ -70,17 +80,17 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAllByModelYear(string modelYear)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear == modelYear).ToList());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear == modelYear).ToList(), Messages.CarsListed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId).ToList());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId).ToList(), Messages.CarsListed);
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId).ToList());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId).ToList(), Messages.CarsListed);
         }
 
         public IDataResult<Car> GetById(int carId)

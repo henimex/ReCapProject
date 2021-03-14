@@ -22,7 +22,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.ItemsListed);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.ItemsListed);
         }
 
         public IDataResult<Rental> GetById(int rentalId)
@@ -33,6 +33,16 @@ namespace Business.Concrete
         public IDataResult<List<CarRentsDto>> GetDetailedRentals()
         {
             return new SuccessDataResult<List<CarRentsDto>>(_rentalDal.GetRentalDetails(), Messages.ItemsListed);
+        }
+
+        public IDataResult<List<CarRentsDto>> GetDetailedRentalsByCarId(int carId)
+        {
+            if (_rentalDal.GetRentalDetails(r => r.CarId == carId).Count > 0)
+            {
+                return new SuccessDataResult<List<CarRentsDto>>(_rentalDal.GetRentalDetails(r => r.CarId == carId), Messages.ItemsListed);
+            }
+
+            return new ErrorDataResult<List<CarRentsDto>>(Messages.ListIsNull);
         }
 
         public IResult GetCarStatus(int carId)

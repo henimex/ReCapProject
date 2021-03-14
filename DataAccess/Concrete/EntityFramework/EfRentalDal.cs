@@ -25,12 +25,17 @@ namespace DataAccess.Concrete.EntityFramework
                     {
                         Id = rnt.Id,
                         CarId = c.Id,
+                        BrandId = br.Id,
                         BrandName = br.BrandName,
+                        UserId = us.Id,
+                        CustomerId = cu.Id,
                         CustomerName = us.FirstName,
                         CustomerSurname = us.LastName,
                         CustomerMail = us.Email,
                         Company = cu.CompanyName,
-                        DailyPrice = c.DailyPrice
+                        DailyPrice = c.DailyPrice,
+                        RentDate = rnt.RentDate,
+                        ReturnDate = (DateTime)rnt.ReturnDate
                     };
                 return result.ToList();
             }

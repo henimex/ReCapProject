@@ -21,11 +21,11 @@ namespace Core.DataAccess.EntityFramework
 
         public void Update(TEntity entity)
         {
-            using (TContext contex = new TContext())
+            using (TContext context = new TContext())
             {
-                var updatedEntity = contex.Entry(entity);
+                var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
-                contex.SaveChanges();
+                context.SaveChanges();
             }
         }
 

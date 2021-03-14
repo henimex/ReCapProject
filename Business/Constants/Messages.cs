@@ -37,5 +37,6 @@ namespace Business.Constants
         public static string UserAlreadyExists = "User Already Exists";
         public static string AccessTokenCreated = "Token Created Successfully";
         public static string TransactionAborted = "Transactional Process Is Not Completed. One or more method could not completed.";
+        public static string ListIsNull = "The List you are trying to get is Empty or there is no entered data in it.";
     }
 }
