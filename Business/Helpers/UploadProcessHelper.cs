@@ -10,7 +10,8 @@ namespace Business.Helpers
 {
     public class UploadProcessHelper : IUploadProcessHelper
     {
-        private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
+        //private readonly string _imagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\";
+        private readonly string _imagePath = "E:\\Apps\\Angular\\RecapProject-FrontEnd\\src\\assets\\CarImages\\";
         private readonly ICarImageService _carImageService;
         private string _filePath = "";
         private string _defaultImagePath = Environment.CurrentDirectory + "\\Assets\\CarImages\\" + "default.jpg";
