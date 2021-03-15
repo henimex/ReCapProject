@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.GetImagesByCarId(carId);
             if (result.Data.Capacity <= 0)
             {
-                var defaultResult = _carImageService.GetById(7);
+                var defaultResult = _carImageService.GetImagesByCarId(0);
                 return Ok(defaultResult);
             }
             if (result.Success) return Ok(result);
