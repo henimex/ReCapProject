@@ -109,6 +109,7 @@ namespace Business.Helpers
         public CarImage CreatePath2([FromForm] CarImage carImage, IFormFile imageFile)
         {
             string imagePath = "";
+            string dbImagePath = "";
             try
             {
                 if (imageFile.Length > 0)
@@ -119,6 +120,7 @@ namespace Business.Helpers
                     var gName = Guid.NewGuid().ToString("n");
                     var filePath = _imagePath + gName + fileExtension;
                     imagePath = filePath;
+                    dbImagePath = "./assets/CarImages/" + gName + fileExtension;
                 }
             }
             catch (Exception)
@@ -127,7 +129,8 @@ namespace Business.Helpers
             }
 
             carImage.Date = DateTime.Now;
-            carImage.ImagePath = imagePath;
+            carImage.PhysicalPath = imagePath;
+            carImage.ImagePath = dbImagePath;
             carImage.CarId = carImage.CarId;
             return carImage;
         }

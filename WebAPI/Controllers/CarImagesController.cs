@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.Add(tempImage);
             if (result.Success)
             {
-                _imageUpload.CopyFile(image, tempImage.ImagePath);
+                _imageUpload.CopyFile(image, tempImage.PhysicalPath);
                 return Ok(result);
             }
 
@@ -81,7 +81,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.Update(tempImage);
             if (result.Success)
             {
-                _imageUpload.CopyFile(image, tempImage.ImagePath);
+                _imageUpload.CopyFile(image, tempImage.PhysicalPath);
                 _imageUpload.DeleteImageIfExists2(deletePath);
                 return Ok(result);
             }
@@ -93,7 +93,7 @@ namespace WebAPI.Controllers
         public IActionResult Delete(CarImage carImage)
         {
             var result = _carImageService.Delete(carImage);
-            _imageUpload.DeleteImageIfExists2(carImage.ImagePath);
+            _imageUpload.DeleteImageIfExists2(carImage.PhysicalPath);
             if (result.Success) return Ok(result);
             return BadRequest(result);
         }
