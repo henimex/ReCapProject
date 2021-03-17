@@ -42,6 +42,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(x => x.ColorId == colorId));
         }
 
+        public IDataResult<List<CarDetailDto>>GetCarDetailsByCar(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(x=>x.Id==id));
+        }
+
         public IResult AddTransactional(Car car)
         {
             Add(car);
