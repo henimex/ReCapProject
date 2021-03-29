@@ -80,7 +80,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("check-available")]
-        public IActionResult CheckAvailablity(Rental rental)
+        public IActionResult CheckAvailability(Rental rental)
         {
             var result = _rentalService.CheckRentability(rental);
             if (result.Success) return Ok(result);

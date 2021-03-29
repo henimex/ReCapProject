@@ -11,7 +11,8 @@ namespace Business.ValidationRules.FluentValidation
         public BrandValidator()
         {
             RuleFor(x => x.BrandName).MinimumLength(2);
-            //RuleFor(x => x.BrandName).Must(StartWithA).WithMessage("Example For Method Using In Rules");
+            RuleFor(x => x.BrandName).MaximumLength(10);
+            RuleFor(x => x.BrandName).Must(StartWithA).WithMessage("Example For Method Using In Rules");
         }
 
         private bool StartWithA(string arg)
