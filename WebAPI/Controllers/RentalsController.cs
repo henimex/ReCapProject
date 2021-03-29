@@ -67,5 +67,25 @@ namespace WebAPI.Controllers
             if (result.Success) return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpGet("get-dis-days")]
+        public IActionResult GetDisableDays(int carId)
+        {
+            var result = _rentalService.DisabledDays(carId);
+            if (result.Count > 0)
+            {
+                return Ok(result);
+            }
+            return BadRequest("Disabled Days Count is : " + result.Count);
+        }
+
+        [HttpGet("check-available")]
+        public IActionResult CheckAvailablity(Rental rental)
+        {
+            var result = _rentalService.CheckRentability(rental);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
+
     }
 }
