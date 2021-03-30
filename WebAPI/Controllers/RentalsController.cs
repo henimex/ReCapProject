@@ -71,7 +71,7 @@ namespace WebAPI.Controllers
         [HttpGet("get-dis-days")]
         public IActionResult GetDisableDays(int carId)
         {
-            var result = _rentalService.Disabl(carId);
+            var result = _rentalService.GetDisabledDays(carId);
             if (result.Count > 0)
             {
                 return Ok(result);
@@ -82,7 +82,7 @@ namespace WebAPI.Controllers
         [HttpGet("check-available")]
         public IActionResult CheckAvailability(Rental rental)
         {
-            var result = _rentalService.CheckRentability(rental);
+            var result = _rentalService.CheckRentStatus(rental);
             if (result.Success) return Ok(result);
             return BadRequest(result);
         }

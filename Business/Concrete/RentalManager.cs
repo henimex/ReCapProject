@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
@@ -71,12 +72,12 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if (CheckRentability(rental).Success)
+            if (CheckRentStatus(rental).Success)
             {
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.Added);
             }
-            return new ErrorResult(CheckRentability(rental).Message);
+            return new ErrorResult(CheckRentStatus(rental).Message);
         }
 
         public IResult Update(Rental rental)
@@ -91,131 +92,32 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
-        public IResult CheckRentability(Rental rental)
+        public IResult CheckRentStatus(Rental rental)
         {
             var result = _rentalDal.GetAll();
-            if (result.Where(x => x.CarId == rental.CarId && x.ReturnDate.Ticks >= rental.RentDate.Ticks && x.RentDate.Ticks <= rental.ReturnDate.Ticks).Any())
+            if (result.Any(x => x.CarId == rental.CarId && x.ReturnDate.Ticks >= rental.RentDate.Ticks && x.RentDate.Ticks <= rental.ReturnDate.Ticks))
             {
                 return new ErrorResult(Messages.NotAvailableForRent);
             }
             return new SuccessResult(Messages.AvailableForRent);
         }
 
-        public List<DateTime> DisabledDays(int carId)
-        {
-            var disabledDates = new List<DateTime>();
-            var result = GetAll();
-            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
-            var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
-
-            for (int i = 0; i < result.Data.Count; i++)
-            {
-                //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = DateTime.Parse(disDate.AddDays(1).ToString("dd/MM/yyyy")))
-                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
-                {
-                    disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
-                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
-                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
-                }
-            }
-
-            return disabledDates;
-        }
-
-        public List<string> DisabledDaysV3(int carId)
+        public List<string> GetDisabledDays(int carId)
         {
             var disabledDates = new List<string>();
-            var result = GetAll();
-            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
-            var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
+            var result = _rentalDal.GetAll().Where(x=>x.CarId == carId).Select(x=> new {x.RentDate, x.ReturnDate}).ToList();
+            var startDate = result.Select(x => x.RentDate).ToList();
+            var endDate = result.Select(x => x.ReturnDate).ToList();
 
-            for (int i = 0; i < result.Data.Count; i++)
+            for (int i = 0; i < result.Count; i++)
             {
-                //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = DateTime.Parse(disDate.AddDays(1).ToString("dd/MM/yyyy")))
-                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
+                //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
+                for (var disDate = startDate[i]; disDate <= endDate[i]; disDate = disDate.AddDays(1))
                 {
-                    //disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
-                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
-                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
                     disabledDates.Add(disDate.ToString("yyyy-MM-dd"));
                 }
             }
 
-            return disabledDates;
-        }
-
-
-
-        public IDataResult<List<DisDays>> DisabledDays2(int CarId)
-        {
-            var disabledDates = new List<DateTime>();
-            var disabledDataResult = new List<DisDays>();
-            var disabledDatesString = new List<DateTime>();
-            var result = GetAll();
-            var startResult = new List<DateTime>();
-            startResult = _rentalDal.GetAll().Select(x => x.RentDate).ToList();
-            var endResult = _rentalDal.GetAll().Select(x => x.ReturnDate).ToList();
-
-
-            for (int i = 0; i < result.Data.Count; i++)
-            {
-                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
-                {
-                    disabledDates.Add(disDate);
-                    //disabledDataResult.Add(dt.ToShortDateString());
-                    //disabledDates.Add(Convert.ToDateTime(dt)).ToString("MM-dd-yyyy");
-                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
-                    //TODO:
-                    //FE de test etmedim ama ordaki format yyyy-mm-dd formatı cevirmem gerekebilir.
-                }
-            }
-
-            
-
-            foreach (var item in disabledDates)
-            {
-                
-            }
-
-            return new SuccessDataResult<List<DisDays>>(disabledDataResult);
-            //return new SuccessDataResult<List<DisDays>>(disabledDates);
-            //return disabledDatesString;
-            return null;
-            //TODO:
-            //Data result olarak donmesi gerek... !!!
-
-
-        }
-
-        public List<DateTime> backup(int carId)
-        {
-            var disabledDates = new List<DateTime>();
-            var disabledDatesString = new List<DateTime>();
-            var testString = new List<string>();
-            var result = GetAll();
-            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
-            var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
-
-
-            for (int i = 0; i < result.Data.Count; i++)
-            {
-                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = DateTime.Parse(disDate.AddDays(1).ToString("dd/MM/yyyy")))
-                    //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
-                {
-                    disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
-                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
-                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
-                }
-            }
-
-            for (int i = 0; i < disabledDates.Count; i++)
-            {
-                //testString.Add(disabledDates[i].ToString("yyyy-MM-dd"));
-                //testString.Add(DateTime.ParseExact(disabledDates[i], "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture
-                //    (DateTime.Parse(date).AddDays(1)).ToShortDateString();
-            }
-
-            //return testString;
             return disabledDates;
         }
     }

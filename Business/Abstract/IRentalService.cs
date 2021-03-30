@@ -18,8 +18,7 @@ namespace Business.Abstract
         IResult Add(Rental rental);
         IResult Update(Rental rental);
         IResult Delete(Rental rental);
-        IResult CheckRentability(Rental rental);
-        List<DateTime> DisabledDays(int carId);
-        IDataResult<List<DisDays>> DisabledDays2(int CarId);
+        IResult CheckRentStatus(Rental rental);
+        List<string> GetDisabledDays(int carId);
     }
 }
