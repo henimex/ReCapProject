@@ -104,13 +104,9 @@ namespace Business.Concrete
         public List<DateTime> DisabledDays(int carId)
         {
             var disabledDates = new List<DateTime>();
-            var disabledDatesString = new List<DateTime>();
-            var testString = new List<string>();
             var result = GetAll();
-            var startResult = new List<DateTime>();
-            startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
+            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
             var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
-
 
             for (int i = 0; i < result.Data.Count; i++)
             {
@@ -118,21 +114,37 @@ namespace Business.Concrete
                 for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
                 {
                     disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
-                    //disabledDates.Add(Convert.ToDateTime(dt)).ToString("MM-dd-yyyy");
+                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
                     //disabledDatesString.Add(dt.(ToString("d MMM YY")));
                 }
             }
 
-            for (int i = 0; i < disabledDates.Count; i++)
-            {
-                //testString.Add(disabledDates[i].ToString("yyyy-MM-dd"));
-                //testString.Add(DateTime.ParseExact(disabledDates[i], "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture
-                //    (DateTime.Parse(date).AddDays(1)).ToShortDateString();
-            }
-
-            //return testString;
             return disabledDates;
         }
+
+        public List<string> DisabledDaysV3(int carId)
+        {
+            var disabledDates = new List<string>();
+            var result = GetAll();
+            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
+            var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
+
+            for (int i = 0; i < result.Data.Count; i++)
+            {
+                //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = DateTime.Parse(disDate.AddDays(1).ToString("dd/MM/yyyy")))
+                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
+                {
+                    //disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
+                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
+                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
+                    disabledDates.Add(disDate.ToString("yyyy-MM-dd"));
+                }
+            }
+
+            return disabledDates;
+        }
+
+
 
         public IDataResult<List<DisDays>> DisabledDays2(int CarId)
         {
@@ -171,6 +183,40 @@ namespace Business.Concrete
             return null;
             //TODO:
             //Data result olarak donmesi gerek... !!!
+
+
+        }
+
+        public List<DateTime> backup(int carId)
+        {
+            var disabledDates = new List<DateTime>();
+            var disabledDatesString = new List<DateTime>();
+            var testString = new List<string>();
+            var result = GetAll();
+            var startResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.RentDate).ToList();
+            var endResult = _rentalDal.GetAll().Where(x => x.CarId == carId).Select(x => x.ReturnDate).ToList();
+
+
+            for (int i = 0; i < result.Data.Count; i++)
+            {
+                for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = DateTime.Parse(disDate.AddDays(1).ToString("dd/MM/yyyy")))
+                    //for (var disDate = startResult[i]; disDate <= endResult[i]; disDate = disDate.AddDays(1))
+                {
+                    disabledDates.Add(DateTime.Parse(disDate.ToString("dd/MM/yyyy")));
+                    //disabledDates.Add(Convert.ToDateTime(disDate)).ToString("MM-dd-yyyy");
+                    //disabledDatesString.Add(dt.(ToString("d MMM YY")));
+                }
+            }
+
+            for (int i = 0; i < disabledDates.Count; i++)
+            {
+                //testString.Add(disabledDates[i].ToString("yyyy-MM-dd"));
+                //testString.Add(DateTime.ParseExact(disabledDates[i], "MM-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture
+                //    (DateTime.Parse(date).AddDays(1)).ToShortDateString();
+            }
+
+            //return testString;
+            return disabledDates;
         }
     }
 }
