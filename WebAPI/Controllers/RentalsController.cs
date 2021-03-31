@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
             return BadRequest("Disabled Days Count is : " + result.Count);
         }
 
-        [HttpGet("check-available")]
+        [HttpPost("check-available")]
         public IActionResult CheckAvailability(Rental rental)
         {
             var result = _rentalService.CheckRentStatus(rental);
