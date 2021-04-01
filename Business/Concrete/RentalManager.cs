@@ -94,8 +94,13 @@ namespace Business.Concrete
 
         public IResult CheckRentStatus(Rental rental)
         {
+            //postmanden gonderildiginde tarih dogru geliyor fakat angularda arasını aldıgı icin secili gunleri dahil etmeden gonderiyor.
+            //o yuzden gelen tarihlere 1 gün ekleyerek sorgulama calısıtıroyrum
+            //tarih aralıgı olayını angulardan düzelttikten sonra bu ekleme islemini kaldıracagım.
             var result = _rentalDal.GetAll();
-            if (result.Any(x => x.CarId == rental.CarId && x.ReturnDate.Ticks >= rental.RentDate.Ticks && x.RentDate.Ticks <= rental.ReturnDate.Ticks))
+            var dayAddedRentDate = rental.RentDate.AddDays(1);
+            var dayAddedReturnDate = rental.ReturnDate.AddDays(1);
+            if (result.Any(x => x.CarId == rental.CarId && x.ReturnDate.Ticks >= dayAddedRentDate.Ticks && x.RentDate.Ticks <= dayAddedReturnDate.Ticks))
             {
                 return new ErrorResult(Messages.NotAvailableForRent);
             }
