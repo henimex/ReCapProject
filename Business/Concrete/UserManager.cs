@@ -64,5 +64,10 @@ namespace Business.Concrete
         {
             return _userDal.Get(u => u.Email == email);
         }
+
+        IDataResult<User> IUserService.GetUserByMail(string email)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(x => x.Email == email));
+        }
     }
 }
