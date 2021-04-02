@@ -73,7 +73,11 @@ namespace Business.Concrete
         {
             if (CheckRentStatus(rental).Success)
             {
-                _rentalDal.Add(rental);
+                var newRental = rental;
+                newRental.RentDate = rental.RentDate.AddDays(1);
+                newRental.ReturnDate = rental.ReturnDate.AddDays(1);
+
+                _rentalDal.Add(newRental);
                 return new SuccessResult(Messages.Added);
             }
             return new ErrorResult(CheckRentStatus(rental).Message);
