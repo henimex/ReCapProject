@@ -15,6 +15,15 @@ namespace WebAPI.Controllers
             _rentalService = rentalService;
         }
 
+        [HttpGet("get-test")]
+        public IActionResult TestDto()
+        {
+            var result = _rentalService.RentDtoTest();
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
+
         [HttpGet("get-all")]
         public IActionResult GetAll()
         {
@@ -76,7 +85,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest("Disabled Days Count is : " + result.Count);
+            return Ok("Disabled Days Count is : " + result.Count);
         }
 
         [HttpPost("check-available")]

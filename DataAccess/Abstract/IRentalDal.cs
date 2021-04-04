@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     public interface IRentalDal : IEntityRepository<Rental>
     {
         List<CarRentsDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null);
+        List<RentDto> GetRentalTest(Expression<Func<Rental, bool>> filter = null);
     }
 }

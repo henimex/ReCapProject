@@ -35,10 +35,31 @@ namespace DataAccess.Concrete.EntityFramework
                         Company = cu.CompanyName,
                         DailyPrice = c.DailyPrice,
                         RentDate = rnt.RentDate,
-                        ReturnDate = (DateTime)rnt.ReturnDate
+                        ReturnDate = rnt.ReturnDate
                     };
                 return result.ToList();
             }
+        }
+
+        public List<RentDto> GetRentalTest(Expression<Func<Rental, bool>> filter = null)
+        {
+            using (HenRentACarContext context = new HenRentACarContext())
+            {
+                var result = from rent in filter is null ? context.Rentals : context.Rentals.Where(filter)
+                    join c in context.Cars on rent.CarId equals c.Id
+                    join b in context.Brands on c.BrandId equals b.Id
+                    select new RentDto()
+                    {
+                        Id = rent.Id,
+                        BrandId = c.BrandId,
+                        BrandName = b.BrandName,
+                        CarId = c.Id,
+                        RentDate = rent.RentDate,
+                        ReturnDate = rent.ReturnDate
+                    };
+                return result.ToList();
+            }
+
         }
     }
 }

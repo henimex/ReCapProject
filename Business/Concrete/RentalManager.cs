@@ -45,6 +45,11 @@ namespace Business.Concrete
             return new ErrorDataResult<List<CarRentsDto>>(Messages.ListIsNull);
         }
 
+        public IDataResult<List<RentDto>> RentDtoTest()
+        {
+            return new SuccessDataResult<List<RentDto>>(_rentalDal.GetRentalTest());
+        }
+
         public IResult GetCarStatus(int carId)
         {
             if (_rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null).Count > 0)

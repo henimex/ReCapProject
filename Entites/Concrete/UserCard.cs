@@ -10,6 +10,7 @@ namespace Entites.Concrete
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Alias { get; set; }
+        public string CardHolderName { get; set; }
         public string CardNumber { get; set; }
         public string ExpMonth { get; set; }
         public string ExpYear { get; set; }
