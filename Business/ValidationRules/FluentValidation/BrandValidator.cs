@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(x => x.BrandName).MinimumLength(2);
             RuleFor(x => x.BrandName).MaximumLength(10);
-            RuleFor(x => x.BrandName).Must(StartWithA).WithMessage("Example For Method Using In Rules");
+            RuleFor(x => x.BrandName).Must(StartWithA).WithMessage("Brand Name Must be Start With A");
         }
 
         private bool StartWithA(string arg)
