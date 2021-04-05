@@ -2,14 +2,15 @@
 
 > ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirilen araç kiralama projesi*
 
-    Yapıaln İşlemler
+      Planlanan Değişiklikler
 - Error Handling
 - UI improvement
 - Admin Panel and Managment Refactoring.
 - Cleaning smelly codes
 - Forward Plan : Adding App for Mobile(Android)
 
-    Güncelleme Geçmişi
+      Güncelleme Geçmişi
+      
 **21.Gün Sonu:**
 - Local storage servisleri eklendi (Set Get Remove)
 - Müşteri Findex puanı sorgulama ve bu puana göre seçilen aracı kiralayıp kiralayamama kontrolü sağlandı.
@@ -160,7 +161,7 @@
 | 13 | İş Kuralları Oluşturma|[Day 13](https://www.youtube.com/watch?v=zdpPm7Q6YE0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=13&ab_channel=EnginDemiro%C4%9F)
 | 14 | Kullanıcı İşlemleri Authorization PasswordHash|[Day 14](https://www.youtube.com/watch?v=2DchBG--kAs&ab_channel=EnginDemiro%C4%9F)
 | 15 | Cache, Transaction, API Injection |[Day 15](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
-| 16 | Frontend *Angular Giriş* |Day 16](https://www.youtube.com/watch?v=f_r8SkLWgBI&ab_channel=EnginDemiro%C4%9F)
+| 16 | Frontend *Angular Giriş* |[Day 16](https://www.youtube.com/watch?v=f_r8SkLWgBI&ab_channel=EnginDemiro%C4%9F)
 | 17 | Bootsrap |[Day 17](https://www.youtube.com/watch?v=2fzL2LDamvM&ab_channel=EnginDemiro%C4%9F)
 | 18 | API İletişimi ve Observable Data Response Model |[Day 18](https://www.youtube.com/watch?v=3xaRghmo-kU&t=9377s&ab_channel=EnginDemiro%C4%9F)
 | 19 | HTML <==> Component Veri Gönderimi |[Day 19](https://www.youtube.com/watch?v=-VVVDswfEJw&t=5776s&ab_channel=EnginDemiro%C4%9F)
