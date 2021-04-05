@@ -10,7 +10,6 @@
 - Forward Plan : Adding App for Mobile(Android)
 
       Güncelleme Geçmişi
-
 **21.Gün Sonu:**
 - Local storage servisleri eklendi (Set Get Remove)
 - Müşteri Findex puanı sorgulama ve bu puana göre seçilen aracı kiralayıp kiralayamama kontrolü sağlandı.
