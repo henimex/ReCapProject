@@ -10,7 +10,7 @@
 - Forward Plan : Adding App for Mobile(Android)
 
       Güncelleme Geçmişi
-      
+
 **21.Gün Sonu:**
 - Local storage servisleri eklendi (Set Get Remove)
 - Müşteri Findex puanı sorgulama ve bu puana göre seçilen aracı kiralayıp kiralayamama kontrolü sağlandı.
@@ -168,4 +168,4 @@
 | 20 | Validation Error Handling |[Day 20](https://www.youtube.com/watch?v=Sb1ZpVlS8LA&t=8863s&ab_channel=EnginDemiro%C4%9F)
 | 21 | Guard ve Authorization Entegrasyonu |[Day 21](https://www.youtube.com/watch?v=obK-YEOuVgY&ab_channel=EnginDemiro%C4%9F)
 
-Java Kampında Görüşmek Üzere...(https://www.kodlama.io/)
+[Java Kampında Görüşmek Üzere...](https://www.kodlama.io/)
