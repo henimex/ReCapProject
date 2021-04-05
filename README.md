@@ -2,10 +2,43 @@
 
 > ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirilen araç kiralama projesi*
 
+    Yapıaln İşlemler
+- Error Handling
+- UI improvement
+- Admin Panel and Managment Refactoring.
+- Cleaning smelly codes
+- Forward Plan : Adding App for Mobile(Android)
+
     Güncelleme Geçmişi
+**21.Gün Sonu:**
+- Local storage servisleri eklendi (Set Get Remove)
+- Müşteri Findex puanı sorgulama ve bu puana göre seçilen aracı kiralayıp kiralayamama kontrolü sağlandı.
+- Müşteri Login Register Logout ve Profil sayfası eklendi.
+- Ödeme yapılan kredi kartını kaydetme seçeneği eklendi.
+- Admin paneli oluşturuldu. [Geliştirilecek]
+
+**20.Gün Sonu:**
+- Ekleme ve güncelleme işlemleri eklendi.
+- Tüm sayfalara Toastr desteği eklendi.
+- Error Middleware eklendi [Diğer alanlarda hataya sebep olduğu için çıkarıldı.Düzenleme yapılıyor.]
+
+**19.Gün Sonu:**
+- Gelişmiş Filtreleme İşlemleri
+- HTML de Pipe ile Discount eklendi
+- Araç kiralama imkanı sağlandı. Belirtilen tarih aralığında aracın kiralanıp kiralanmadığı sorgulanması sağlandı.
+- Önceden kiralanan tarihler DatePicker da [Disabled] hale getirildi. (Bununla çok uğraştım)
+- Kredi kartı ile ödeme similasyonu dahil edildi
+
+**18.Gün Sonu:**
+- HTML <=> Component etkileşimi sağlandı
+- Temel Filtreleme işlemleri yapıldı.
+
+**17.Gün Sonu:**
+- API Entegrasyon ve Listeleme İşlemleri tamamlandı.
+- Bootstrap projeye dahil edildi.
 
 **16.Gün Sonu:**
-- Frontend...
+- Angular Cli Giriş
 
 **15.Gün Sonu:**
 - JWT Entegrasyonu düzenlemesi yapıldı.
@@ -31,7 +64,12 @@
 ----------
 
     Bilnen Hatalar
-### v 1.15
+### v 1.21
+ - [ ] Ödeme sayfaları arasında iler geri gidilebiliyor veya onceden kaydedilmiş ise direk ilgili alan yükleniyor.
+ - [ ] İlk ekranda Login olunduğunda kullanıcı ayarlarının tamamen yüklenebilmesi için root Refresh yapılması gerekebiliyor.
+ - [ ] Error Handling API ile düzhün haberleşemiyor.
+ ---
+### v 1.15 v1.16 v1.17 v1.18 v1.19 v1.20
  - [X] Hata tespit edilmedi.
  ---
 ### v 1.14
@@ -85,6 +123,22 @@
 	    [OperationClaimId] INT NOT NULL
 	)
 
+	CREATE TABLE [dbo].[Payments](
+		[Id] [int] IDENTITY(1,1) NOT NULL,
+		[CarId] [int] NULL,
+		[CustomerId] [int] NULL,
+		[DailyPrice] [decimal](18, 0) NULL,
+		[DaysForRent] [nvarchar](50) NULL,
+		[TotalPrice] [decimal](18, 0) NULL,
+		[PaymentDay] [datetime] NULL,
+	 CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED 
+	(
+		[Id] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+	GO
+
+
 
 ----
 
@@ -106,4 +160,9 @@
 | 13 | İş Kuralları Oluşturma|[Day 13](https://www.youtube.com/watch?v=zdpPm7Q6YE0&list=PLqG356ExoxZVN7rC0KmMo0lvECK97VRZg&index=13&ab_channel=EnginDemiro%C4%9F)
 | 14 | Kullanıcı İşlemleri Authorization PasswordHash|[Day 14](https://www.youtube.com/watch?v=2DchBG--kAs&ab_channel=EnginDemiro%C4%9F)
 | 15 | Cache, Transaction, API Injection |[Day 15](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
-| 16 | Frontend *Angular* |[Loading 06.03.2021 21:00](https://www.youtube.com/watch?v=mbl4BjQMX78&ab_channel=EnginDemiro%C4%9F)
+| 16 | Frontend *Angular Giriş* |Day 16](https://www.youtube.com/watch?v=f_r8SkLWgBI&ab_channel=EnginDemiro%C4%9F)
+| 17 | Bootsrap |[Day 17](https://www.youtube.com/watch?v=2fzL2LDamvM&ab_channel=EnginDemiro%C4%9F)
+| 18 | API İletişimi ve Observable Data Response Model |[Day 18](https://www.youtube.com/watch?v=3xaRghmo-kU&t=9377s&ab_channel=EnginDemiro%C4%9F)
+| 19 | HTML <==> Component Veri Gönderimi |[Day 19](https://www.youtube.com/watch?v=-VVVDswfEJw&t=5776s&ab_channel=EnginDemiro%C4%9F)
+| 20 | Validation Error Handling |[Day 20](https://www.youtube.com/watch?v=Sb1ZpVlS8LA&t=8863s&ab_channel=EnginDemiro%C4%9F)
+| 21 | Guard ve Authorization Entegrasyonu |[Day 21](https://www.youtube.com/watch?v=obK-YEOuVgY&ab_channel=EnginDemiro%C4%9F)
