@@ -1,7 +1,7 @@
      HenDev Rent A Car
 
 > ###### *engindemirog tarafından ücretsiz sunulan kursa eşzamanlı geliştirilen araç kiralama projesi*
-> ###### *Project Bundle Links [Backend-C#](https://github.com/henimex/ReCapProject) [FrontEnd-Angular](https://github.com/henimex/RecapProject-FrontEnd) [Mobile App-Kotlin TBA]*
+> ###### *Project Bundle Links [Backend-C#](https://github.com/henimex/ReCapProject) || [FrontEnd-Angular](https://github.com/henimex/RecapProject-FrontEnd) || [Mobile App-Kotlin TBA]*
 
       Planlanan Değişiklikler
 - Error Handling
